@@ -2,6 +2,10 @@ namespace AcademiaTF;
 
 public class Academia
 {
+    // Construtores
+    public Academia() { }
+    
+    // Atributos
     private List<Treino> _treinos = new List<Treino>();
     private List<Exercicio> _exercicios = new List<Exercicio>();
     private List<Treinador> _treinadores = new List<Treinador>();

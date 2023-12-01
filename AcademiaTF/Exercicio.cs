@@ -2,6 +2,16 @@ namespace AcademiaTF;
 
 public class Exercicio
 {
+    // Construtores
+    public Exercicio() { }
+    public Exercicio(string grupoMuscular, int series, int repeticoes, int tempoIntervalo)
+    {
+        GrupoMuscular = grupoMuscular;
+        Series = series;
+        Repeticoes = repeticoes;
+        TempoIntervalo = tempoIntervalo;
+    }
+    
     // Atributos
     private string? _grupoMuscular;
     private int _series;

@@ -3,7 +3,11 @@ namespace AcademiaTF;
 public class Treino
 {
     // Construtores
-    public Treino() {}
+    public Treino()
+    {
+        _exercicios = new List<Exercicio>();
+        _clientes = new List<(Cliente, int)?>();
+    }
     public Treino(string tipo, string objetivo, int duracao, DateTime dataInicio, int vencimento, Treinador? treinador)
     {
         Tipo = tipo;

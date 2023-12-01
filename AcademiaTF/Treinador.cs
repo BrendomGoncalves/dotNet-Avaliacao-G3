@@ -1,7 +1,17 @@
 namespace AcademiaTF;
 
-public class Treinador
+public class Treinador : Pessoa
 {
+    // Construtores
+    public Treinador() { }
+    public Treinador(string nome, DateTime nascimento, string cpf, string cref)
+    {
+        Nome = nome;
+        Nascimento = nascimento;
+        Cpf = cpf;
+        Cref = cref;
+    }
+    
     // Atributos
     private string? _cref;
     

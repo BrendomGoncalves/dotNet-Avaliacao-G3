@@ -1,7 +1,19 @@
 namespace AcademiaTF;
 
-public class Cliente
+public class Cliente : Pessoa
 {
+    // Construtores
+    public Cliente() { }
+    public Cliente(string nome, DateTime nascimento, string cpf, float altura, float peso)
+    {
+        Nome = nome;
+        Nascimento = nascimento;
+        Cpf = cpf;
+        Altura = altura;
+        Peso = peso;
+    }
+    
+    // Atributos
     private float _altura;
     private float _peso;
     
