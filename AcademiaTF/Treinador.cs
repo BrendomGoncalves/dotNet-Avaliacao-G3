@@ -1,4 +1,4 @@
-namespace Avaliacao;
+namespace AcademiaTF;
 
 public class Treinador
 {
