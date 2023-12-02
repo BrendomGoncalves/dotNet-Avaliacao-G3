@@ -49,13 +49,19 @@ public class Academia
             Console.WriteLine("1. Gerenciar Treinadores");
             Console.WriteLine("0. Voltar");
             Console.Write("> ");
-            opcao = int.Parse(Console.ReadLine() ?? "0");
+            try
+            {
+                opcao = int.Parse(Console.ReadLine() ?? "0");
+            }
+            catch
+            {
+                opcao = -1;
+            }
 
             switch (opcao)
             {
                 case 1:
                     gerenciaTreinadores();
-                    App.pausa();
                     break;
                 case 0:
                     break;
@@ -66,6 +72,7 @@ public class Academia
             }
         } while (opcao != 0);
     }
+
     private void gerenciaTreinadores()
     {
         int opcao;
@@ -79,7 +86,14 @@ public class Academia
             Console.WriteLine("4. Remover Treinador");
             Console.WriteLine("0. Voltar");
             Console.Write("> ");
-            opcao = int.Parse(Console.ReadLine() ?? "0");
+            try
+            {
+                opcao = int.Parse(Console.ReadLine() ?? "0");
+            }
+            catch
+            {
+                opcao = -1;
+            }
 
             string? cpf;
             switch (opcao)
@@ -98,6 +112,7 @@ public class Academia
                         Console.WriteLine("Cadastro Cancelado! Realize a operacao novamente");
                         App.pausa();
                     }
+
                     App.pausa();
                     break;
                 case 2:
@@ -108,6 +123,7 @@ public class Academia
                     {
                         treinador.imprimeTreinador();
                     }
+
                     Console.WriteLine();
                     App.pausa();
                     break;
@@ -118,8 +134,9 @@ public class Academia
                     cpf = Console.ReadLine();
                     try
                     {
-                        Treinador editarTreinador = _treinadores.Find(treinador => treinador.Cpf == cpf) ?? throw new Exception("Treinador não encontrado");
-                        editarTreinador.editarTreinador();
+                        Treinador eTreinador = _treinadores.Find(treinador => treinador.Cpf == cpf) ??
+                                               throw new Exception("Treinador não encontrado");
+                        eTreinador.editarTreinador();
                         Console.WriteLine("Nome do treinador editado com sucesso!");
                     }
                     catch
@@ -127,6 +144,7 @@ public class Academia
                         Console.WriteLine("Edicao Cancelada! Realize a operacao novamente");
                         App.pausa();
                     }
+
                     App.pausa();
                     break;
                 case 4:
@@ -136,8 +154,9 @@ public class Academia
                     cpf = Console.ReadLine();
                     try
                     {
-                        Treinador removerTreinador = _treinadores.Find(treinador => treinador.Cpf == cpf) ?? throw new Exception("Treinador não encontrado");
-                        _treinadores.Remove(removerTreinador);
+                        Treinador rTreinador = _treinadores.Find(treinador => treinador.Cpf == cpf) ??
+                                               throw new Exception("Treinador não encontrado");
+                        _treinadores.Remove(rTreinador);
                         Console.WriteLine("Treinador removido com sucesso!");
                     }
                     catch
@@ -145,6 +164,144 @@ public class Academia
                         Console.WriteLine("Remocao Cancelada! Realize a operacao novamente");
                         App.pausa();
                     }
+
+                    App.pausa();
+                    break;
+                case 0:
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida!");
+                    break;
+            }
+        } while (opcao != 0);
+    }
+
+    public void menuCliente()
+    {
+        int opcao;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine("== Menu Clientes ==");
+            Console.WriteLine("1. Gerenciar Clientes");
+            Console.WriteLine("0. Voltar");
+            Console.Write("> ");
+            try
+            {
+                opcao = int.Parse(Console.ReadLine() ?? "0");
+            }
+            catch
+            {
+                opcao = -1;
+            }
+
+            switch (opcao)
+            {
+                case 1:
+                    gerenciaClientes();
+                    break;
+                case 0:
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida!");
+                    App.pausa();
+                    break;
+            }
+        } while (opcao != 0);
+    }
+
+    private void gerenciaClientes()
+    {
+        int opcao;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine("== Gerenciar Clientes ==");
+            Console.WriteLine("1. Cadastrar Cliente");
+            Console.WriteLine("2. Listar Clientes");
+            Console.WriteLine("3. Editar Cliente");
+            Console.WriteLine("4. Remover Cliente");
+            Console.WriteLine("0. Voltar");
+            Console.Write("> ");
+            try
+            {
+                opcao = int.Parse(Console.ReadLine() ?? "0");
+            }
+            catch
+            {
+                opcao = -1;
+            }
+
+            string? cpf;
+            switch (opcao)
+            {
+                case 1:
+                    Console.Clear();
+                    Cliente novoCliente = new Cliente();
+                    try
+                    {
+                        novoCliente.criarCliente();
+                        _clientes.Add(novoCliente);
+                        Console.WriteLine("Cliente Cadastrado com sucesso!");
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Cadastro Cancelado! Realize a operacao novamente");
+                        App.pausa();
+                    }
+
+                    App.pausa();
+                    break;
+                case 2:
+                    Console.Clear();
+                    Console.WriteLine("Lista de Clientes:");
+                    Console.WriteLine("CPF\t\tDATA DE NASCIMENTO\tALTURA\tPESO\tNOME");
+                    foreach (Cliente cliente in _clientes)
+                    {
+                        cliente.imprimeCliente();
+                    }
+
+                    Console.WriteLine();
+                    App.pausa();
+                    break;
+                case 3:
+                    Console.Clear();
+                    Console.WriteLine("EDITAR CLIENTE:");
+                    Console.Write("Digite o CPF [ex: XXXXXXXXXXXX]: ");
+                    cpf = Console.ReadLine();
+                    try
+                    {
+                        Cliente eCliente = _clientes.Find(cliente => cliente.Cpf == cpf) ??
+                                           throw new Exception("Cliente não encontrado");
+                        eCliente.editarCliente();
+                        Console.WriteLine("Cliente editado com sucesso!");
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Edicao Cancelada! Realize a operacao novamente");
+                        App.pausa();
+                    }
+
+                    App.pausa();
+                    break;
+                case 4:
+                    Console.Clear();
+                    Console.WriteLine("REMOVER CLIENTE:");
+                    Console.WriteLine("Digite o CPF [ex: XXXXXXXXXXXX]: ");
+                    cpf = Console.ReadLine();
+                    try
+                    {
+                        Cliente rCliente = _clientes.Find(cliente => cliente.Cpf == cpf) ??
+                                           throw new Exception("Cliente não encontrado");
+                        _clientes.Remove(rCliente);
+                        Console.WriteLine("Cliente removido com sucesso!");
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Remocao Cancelada! Realize a operacao novamente");
+                        App.pausa();
+                    }
+
                     App.pausa();
                     break;
                 case 0:

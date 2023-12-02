@@ -36,4 +36,55 @@ public class Cliente : Pessoa
             _peso = value;
         }
     }
+    
+    // Metodos
+    public void criarCliente()
+    {
+        Console.Clear();
+        Console.WriteLine("CRIAR CLIENTE:");
+        Console.Write("Nome: ");
+        Nome = Console.ReadLine();
+
+        Console.Write("Nascimento [ex: XX/XX/XXXX]: ");
+        string? nascimento = Console.ReadLine();
+        while (!validaData(nascimento!))
+        {
+            Console.WriteLine("Data inválida!");
+            Console.Write("Nascimento [ex: XX/XX/XXXX]: ");
+            nascimento = Console.ReadLine();
+        }
+        Nascimento = Convert.ToDateTime(nascimento);
+
+        Console.Write("CPF [ex: XXXXXXXXXXXX]: ");
+        string? cpf = Console.ReadLine();
+        while (!validaCpf(cpf!))
+        {
+            Console.WriteLine("Cpf invalido");
+            Console.Write("Cpf: ");
+            cpf = Console.ReadLine();
+        }
+        Cpf = cpf;
+
+        Console.Write("Altura [ex: X,XX]: ");
+        Altura = float.Parse(Console.ReadLine() ?? "0.00");
+        
+        Console.Write("Peso [ex: XX,X]: ");
+        Peso = float.Parse(Console.ReadLine() ?? "0.00");
+    }
+    
+    public void editarCliente()
+    {
+        Console.Clear();
+        Console.WriteLine("EDITAR CLIENTE:");
+        Console.Write("Nome: ");
+        Nome = Console.ReadLine();
+        Console.Write("Altura [ex: X,XX]: ");
+        Altura = float.Parse(Console.ReadLine() ?? "0.00");
+        Console.Write("Peso [ex: XX,X]: ");
+        Peso = float.Parse(Console.ReadLine() ?? "0.00");
+    }
+    public void imprimeCliente()
+    {
+        Console.WriteLine($"{Cpf}\t{Nascimento:dd/MM/yyyy}\t\t{Altura:F2}\t{Peso:F2}\t{Nome}");
+    }
 }

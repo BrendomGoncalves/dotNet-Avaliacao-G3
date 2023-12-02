@@ -14,7 +14,14 @@ public class App
             Console.WriteLine("2. Clientes");
             Console.WriteLine("0. Sair");
             Console.Write("> ");
-            opcao = int.Parse(Console.ReadLine() ?? "0");
+            try
+            {
+                opcao = int.Parse(Console.ReadLine() ?? "0");
+            }
+            catch
+            {
+                opcao = -1;
+            }
 
             switch (opcao)
             {
@@ -22,8 +29,7 @@ public class App
                     academia.menuTreinador();
                     break;
                 case 2:
-                    // academia.menuCliente();
-                    pausa();
+                    academia.menuCliente();
                     break;
                 case 0:
                     Console.Clear();
@@ -36,6 +42,7 @@ public class App
             }
         } while (opcao != 0);
     }
+
     public static void pausa()
     {
         Console.Write("Pressione qualquer tecla para continuar...");

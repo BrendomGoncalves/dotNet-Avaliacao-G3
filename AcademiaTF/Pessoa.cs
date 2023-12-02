@@ -58,7 +58,7 @@ public class Pessoa
     }
     public static bool validaCref(string cref)
     {
-        const string padrao = @"\d{6}-\d{1}/\d{2}";
+        const string padrao = @"\d{6}-\d{1}/[A-Z]{2}";
         if (Regex.IsMatch(cref, padrao))
         {
             return true;
