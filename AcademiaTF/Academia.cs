@@ -200,6 +200,143 @@ public class Academia
         } while (opcao != 0);
     }
 
+    public void menuExercicio()
+    {
+        int opcao;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine("== Menu Exercícios ==");
+            Console.WriteLine("1. Gerenciar Exercícios");
+            Console.WriteLine("0. Voltar");
+            Console.Write("> ");
+            try
+            {
+                opcao = int.Parse(Console.ReadLine() ?? "0");
+            }
+            catch
+            {
+                opcao = -1;
+            }
+
+            switch (opcao)
+            {
+                case 1:
+                    gerenciaExercicios();
+                    break;
+                case 0:
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida!");
+                    App.pausa();
+                    break;
+            }
+        } while (opcao != 0);
+    }
+    private void gerenciaExercicios()
+    {
+
+        int opcao;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine("== Gerenciar Exercícios ==");
+            Console.WriteLine("1. Cadastrar Exercício");
+            Console.WriteLine("2. Listar Exercícios");
+            Console.WriteLine("3. Editar Exercícios");
+            Console.WriteLine("4. Remover Exercícios");
+            Console.WriteLine("0. Voltar");
+            Console.Write("> ");
+            try
+            {
+                opcao = int.Parse(Console.ReadLine() ?? "0");
+            }
+            catch
+            {
+                opcao = -1;
+            }
+
+            string? grupoMuscular;
+            switch (opcao)
+            {
+                case 1:
+                    Console.Clear();
+                    Exercicio novoExercicio = new Exercicio();
+                    try
+                    {
+                        novoExercicio.criarExercicio();
+                        _exercicios.Add(novoExercicio);
+                        Console.WriteLine("Exercício cadastrado com sucesso!");
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Cadastro cancelado! Realize a operacao novamente");
+                        App.pausa();
+                    }
+
+                    App.pausa();
+                    break;
+                case 2:
+                    Console.Clear();
+                    Console.WriteLine("Lista de Exercício:");
+                    Console.WriteLine("GRUPO MUSCULAR\t\tSÉRIES\t\tREPETIÇÕES\tINTERVALO DE DESCANSO (s)");
+                    foreach (Exercicio exercicio in _exercicios)
+                    {
+                        exercicio.imprimeExercicio();
+                    }
+
+                    Console.WriteLine();
+                    App.pausa();
+                    break;
+                case 3:
+                    Console.Clear();
+                    Console.WriteLine("EDITAR EXERCÍCIO:");
+                    Console.Write("Digite o grupo muscular [ex: Pernas]: ");
+                    grupoMuscular = Console.ReadLine();
+                    try
+                    {
+                        Exercicio uExercicio = _exercicios.Find(exercicio => exercicio.GrupoMuscular == grupoMuscular) ??
+                                               throw new Exception("Exercício não encontrado");
+                        uExercicio.editarExercicio();
+                        Console.WriteLine("Nome do treinador editado com sucesso!");
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Edição cancelada! Realize a operacao novamente");
+                        App.pausa();
+                    }
+
+                    App.pausa();
+                    break;
+                case 4:
+                    Console.Clear();
+                    Console.WriteLine("REMOVER EXERCÍCIO:");
+                    Console.WriteLine("Digite o grupo muscular [ex: Pernas]: ");
+                    grupoMuscular = Console.ReadLine();
+                    try
+                    {
+                        Exercicio rExercicio = _exercicios.Find(exercicio => exercicio.GrupoMuscular == grupoMuscular) ??
+                                               throw new Exception("Treinador não encontrado");
+                        _exercicios.Remove(rExercicio);
+                        Console.WriteLine("Exercício removido com sucesso!");
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Remoção cancelada! Realize a operacao novamente");
+                        App.pausa();
+                    }
+
+                    App.pausa();
+                    break;
+                case 0:
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida!");
+                    break;
+            }
+        } while (opcao != 0);
+
+    }
     public void menuCliente()
     {
         int opcao;
@@ -254,13 +391,13 @@ public class Academia
                     Console.WriteLine("Filtrar por IMC:");
                     Console.Write("IMC minimo: ");
                     double imcBase = double.Parse(Console.ReadLine() ?? "0");
-                    
+
                     Console.Clear();
                     Console.WriteLine("Clientes encontrado:");
                     List<Cliente> clientesFiltrados2 = _clientes
                         .Where(cliente => cliente.Peso / Math.Pow(cliente.Altura, 2) > imcBase)
                         .OrderBy(cliente => cliente.Peso / Math.Pow(cliente.Altura, 2)).ToList();
-                    
+
                     if (clientesFiltrados2.Count > 0)
                     {
                         foreach (Cliente cliente in clientesFiltrados2)

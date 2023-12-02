@@ -12,6 +12,7 @@ public class App
             Console.WriteLine("Menu da Academia:");
             Console.WriteLine("1. Treinadores");
             Console.WriteLine("2. Clientes");
+            Console.WriteLine("3. Exercícios");
             Console.WriteLine("0. Sair");
             Console.Write("> ");
             try
@@ -30,6 +31,9 @@ public class App
                     break;
                 case 2:
                     academia.menuCliente();
+                    break;
+                case 3:
+                    academia.menuExercicio();
                     break;
                 case 0:
                     Console.Clear();

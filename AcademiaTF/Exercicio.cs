@@ -55,4 +55,55 @@ public class Exercicio
             _tempoIntervalo = value;
         }
     }
+
+    public void criarExercicio()
+    {
+        Console.Clear();
+        Console.WriteLine("CRIAR EXERCÍCIO:");
+        Console.Write("Grupo Muscular: ");
+        GrupoMuscular = Console.ReadLine();
+
+        Console.Write("Quantidade de séries: ");
+        string? series = Console.ReadLine();
+      
+        Series = int.Parse(series);
+
+        Console.Write("Quantidade de repetições: ");
+        string? repeticoes= Console.ReadLine();
+        
+        Repeticoes = int.Parse(repeticoes);
+        
+
+        Console.Write("Tempo de intervalo (em segundos): ");
+        string? tempoIntervalo = Console.ReadLine();
+        TempoIntervalo = int.Parse(tempoIntervalo);
+    }
+
+    public void editarExercicio()
+    {
+
+        Console.Clear();
+        Console.WriteLine("EDITAR EXERCÍCIO:");
+
+        Console.Write("Quantidade de séries: ");
+        string? series = Console.ReadLine();
+      
+        Series = int.Parse(series);
+
+        Console.Write("Quantidade de repetições: ");
+        string? repeticoes= Console.ReadLine();
+        
+        Repeticoes = int.Parse(repeticoes);
+        
+
+        Console.Write("Tempo de intervalo (em segundos): ");
+        string? tempoIntervalo = Console.ReadLine();
+        TempoIntervalo = int.Parse(tempoIntervalo);
+    }
+
+    
+    public void imprimeExercicio()
+    {
+        Console.WriteLine($"{GrupoMuscular}\t\t{Series}\t\t{Repeticoes}\t\t{TempoIntervalo}");
+    }
 }
