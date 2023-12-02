@@ -295,10 +295,9 @@ public class Academia
                     grupoMuscular = Console.ReadLine();
                     try
                     {
-                        Exercicio uExercicio = _exercicios.Find(exercicio => exercicio.GrupoMuscular == grupoMuscular) ??
-                                               throw new Exception("Exercício não encontrado");
+                        Exercicio uExercicio = _exercicios.Find(exercicio => exercicio.GrupoMuscular == grupoMuscular) ?? throw new Exception("Exercício não encontrado");
                         uExercicio.editarExercicio();
-                        Console.WriteLine("Nome do treinador editado com sucesso!");
+                        Console.WriteLine("Exercício editado com sucesso!");
                     }
                     catch
                     {

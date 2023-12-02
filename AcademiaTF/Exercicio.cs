@@ -104,6 +104,6 @@ public class Exercicio
     
     public void imprimeExercicio()
     {
-        Console.WriteLine($"{GrupoMuscular}\t\t{Series}\t\t{Repeticoes}\t\t{TempoIntervalo}");
+        Console.WriteLine($"{GrupoMuscular}\t\t  {Series}\t\t  {Repeticoes}\t\t\t{TempoIntervalo}");
     }
 }
