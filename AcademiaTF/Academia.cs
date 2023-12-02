@@ -210,6 +210,8 @@ public class Academia
             Console.WriteLine("1. Gerenciar Clientes");
             Console.WriteLine("2. Filtrar por Idade");
             Console.WriteLine("3. Filtrar por IMC");
+            Console.WriteLine("4. Listar Clientes em Ordem Alfabetica");
+            Console.WriteLine("5. Listar Clientes por Idade Descrescente");
             Console.WriteLine("0. Voltar");
             Console.Write("> ");
             try
@@ -228,7 +230,7 @@ public class Academia
                     break;
                 case 2:
                     Console.Clear();
-                    Console.WriteLine("Filtrar por Idade:");
+                    Console.WriteLine("Filtro por Idade:");
                     Console.Write("Idade minima: ");
                     int idadeMinima = int.Parse(Console.ReadLine() ?? "0");
                     Console.Write("Idade maxima: ");
@@ -251,16 +253,16 @@ public class Academia
                     break;
                 case 3:
                     Console.Clear();
-                    Console.WriteLine("Filtrar por IMC:");
+                    Console.WriteLine("Filtro por IMC:");
                     Console.Write("IMC minimo: ");
                     double imcBase = double.Parse(Console.ReadLine() ?? "0");
-                    
+
                     Console.Clear();
                     Console.WriteLine("Clientes encontrado:");
                     List<Cliente> clientesFiltrados2 = _clientes
                         .Where(cliente => cliente.Peso / Math.Pow(cliente.Altura, 2) > imcBase)
                         .OrderBy(cliente => cliente.Peso / Math.Pow(cliente.Altura, 2)).ToList();
-                    
+
                     if (clientesFiltrados2.Count > 0)
                     {
                         foreach (Cliente cliente in clientesFiltrados2)
@@ -269,6 +271,20 @@ public class Academia
                         }
                     }
                     else Console.WriteLine("Nenhum cliente encontrado.");
+                    App.pausa();
+                    break;
+                case 4:
+                    Console.Clear();
+                    Console.WriteLine("Clientes em Ordem Alfabetica:");
+                    List<Cliente> clientesOrdenados = _clientes.OrderBy(c => c.Nome).ToList();
+                    foreach (Cliente cliente in clientesOrdenados) cliente.imprimeCliente();
+                    App.pausa();
+                    break;
+                case 5:
+                    Console.Clear();
+                    Console.WriteLine("Clientes por Idade Descrescente:");
+                    List<Cliente> clientesOrdenados2 = _clientes.OrderByDescending(c => c.Nascimento).ToList();
+                    foreach (Cliente cliente in clientesOrdenados2) cliente.imprimeCliente();
                     App.pausa();
                     break;
                 case 0:
