@@ -54,8 +54,10 @@ public class Pessoa
         {
             return true;
         }
+
         return false;
     }
+
     public static bool validaCref(string cref)
     {
         const string padrao = @"\d{6}-\d{1}/[A-Z]{2}";
@@ -63,6 +65,16 @@ public class Pessoa
         {
             return true;
         }
+
         return false;
+    }
+
+    public static int calculaIdade(DateTime dataNascimento)
+    {
+        DateTime hoje = DateTime.Today;
+        int idade = hoje.Year - dataNascimento.Year;
+        if (dataNascimento > hoje.AddYears(-idade))
+            idade--;
+        return idade;
     }
 }

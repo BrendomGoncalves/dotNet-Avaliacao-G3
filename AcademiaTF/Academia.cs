@@ -47,6 +47,7 @@ public class Academia
             Console.Clear();
             Console.WriteLine("== Menu Treinadores ==");
             Console.WriteLine("1. Gerenciar Treinadores");
+            Console.WriteLine("2. Filtrar por Idade");
             Console.WriteLine("0. Voltar");
             Console.Write("> ");
             try
@@ -62,6 +63,27 @@ public class Academia
             {
                 case 1:
                     gerenciaTreinadores();
+                    break;
+                case 2:
+                    Console.Clear();
+                    Console.WriteLine("Filtrar por Idade:");
+                    Console.Write("Idade minima: ");
+                    int idadeMinima = int.Parse(Console.ReadLine() ?? "0");
+                    Console.Write("Idade maxima: ");
+                    int idadeMaxima = int.Parse(Console.ReadLine() ?? "0");
+                    Console.Clear();
+                    Console.WriteLine("Treinadores encontrado:");
+                    List<Treinador> treinadoresFiltrados = _treinadores.Where(treinador =>
+                        Pessoa.calculaIdade(treinador.Nascimento) >= idadeMinima &&
+                        Pessoa.calculaIdade(treinador.Nascimento) <= idadeMaxima).ToList();
+                    if (treinadoresFiltrados.Count > 0)
+                    {
+                        foreach (Treinador treinador in treinadoresFiltrados)
+                        {
+                            treinador.imprimeTreinador();
+                        }
+                    } else Console.WriteLine("Nenhum treinador encontrado.");
+                    App.pausa();
                     break;
                 case 0:
                     break;
@@ -184,6 +206,7 @@ public class Academia
             Console.Clear();
             Console.WriteLine("== Menu Clientes ==");
             Console.WriteLine("1. Gerenciar Clientes");
+            Console.WriteLine("2. Filtrar por Idade");
             Console.WriteLine("0. Voltar");
             Console.Write("> ");
             try
@@ -199,6 +222,27 @@ public class Academia
             {
                 case 1:
                     gerenciaClientes();
+                    break;
+                case 2:
+                    Console.Clear();
+                    Console.WriteLine("Filtrar por Idade:");
+                    Console.Write("Idade minima: ");
+                    int idadeMinima = int.Parse(Console.ReadLine() ?? "0");
+                    Console.Write("Idade maxima: ");
+                    int idadeMaxima = int.Parse(Console.ReadLine() ?? "0");
+                    Console.Clear();
+                    Console.WriteLine("Clientes encontrado:");
+                    List<Cliente> clientesFiltrados = _clientes.Where(cliente =>
+                        Pessoa.calculaIdade(cliente.Nascimento) >= idadeMinima &&
+                        Pessoa.calculaIdade(cliente.Nascimento) <= idadeMaxima).ToList();
+                    if (clientesFiltrados.Count > 0)
+                    {
+                        foreach (Cliente cliente in clientesFiltrados)
+                        {
+                            cliente.imprimeCliente();
+                        }
+                    } else Console.WriteLine("Nenhum cliente encontrado.");
+                    App.pausa();
                     break;
                 case 0:
                     break;
