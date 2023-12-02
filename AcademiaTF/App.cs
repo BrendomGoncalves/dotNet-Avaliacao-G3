@@ -4,15 +4,14 @@ public class App
 {
     public static void Main()
     {
+        Academia academia = new();
         int opcao;
         do
         {
             Console.Clear();
-            Console.WriteLine("Menu da academia:");
-            Console.WriteLine("1. Gerenciar Treino");
-            Console.WriteLine("2. Gerenciar Exercicios");
-            Console.WriteLine("3. Gerenciar Treinador");
-            Console.WriteLine("4. Gerenciar Cliente");
+            Console.WriteLine("Menu da Academia:");
+            Console.WriteLine("1. Treinadores");
+            Console.WriteLine("2. Clientes");
             Console.WriteLine("0. Sair");
             Console.Write("> ");
             opcao = int.Parse(Console.ReadLine() ?? "0");
@@ -20,24 +19,11 @@ public class App
             switch (opcao)
             {
                 case 1:
-                    Console.Clear();
-                    Console.WriteLine("== Gerenciar Treino ==");
-                    Pausa();
+                    academia.menuTreinador();
                     break;
                 case 2:
-                    Console.Clear();
-                    Console.WriteLine("== Gerenciar Exercícios ==");
-                    Pausa();
-                    break;
-                case 3:
-                    Console.Clear();
-                    Console.WriteLine("== Gerenciar Treinador ==");
-                    Pausa();
-                    break;
-                case 4:
-                    Console.Clear();
-                    Console.WriteLine("== Gerenciar Cliente ==");
-                    Pausa();
+                    // academia.menuCliente();
+                    pausa();
                     break;
                 case 0:
                     Console.Clear();
@@ -45,14 +31,14 @@ public class App
                     break;
                 default:
                     Console.WriteLine("Opção inválida!");
-                    Pausa();
+                    pausa();
                     break;
             }
         } while (opcao != 0);
     }
-    public static void Pausa()
+    public static void pausa()
     {
-        Console.WriteLine("Pressione qualquer tecla para continuar...");
+        Console.Write("Pressione qualquer tecla para continuar...");
         Console.ReadKey();
     }
 }
