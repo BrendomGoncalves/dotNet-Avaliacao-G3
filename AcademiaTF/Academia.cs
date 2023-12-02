@@ -82,7 +82,9 @@ public class Academia
                         {
                             treinador.imprimeTreinador();
                         }
-                    } else Console.WriteLine("Nenhum treinador encontrado.");
+                    }
+                    else Console.WriteLine("Nenhum treinador encontrado.");
+
                     App.pausa();
                     break;
                 case 0:
@@ -207,6 +209,7 @@ public class Academia
             Console.WriteLine("== Menu Clientes ==");
             Console.WriteLine("1. Gerenciar Clientes");
             Console.WriteLine("2. Filtrar por Idade");
+            Console.WriteLine("3. Filtrar por IMC");
             Console.WriteLine("0. Voltar");
             Console.Write("> ");
             try
@@ -241,7 +244,31 @@ public class Academia
                         {
                             cliente.imprimeCliente();
                         }
-                    } else Console.WriteLine("Nenhum cliente encontrado.");
+                    }
+                    else Console.WriteLine("Nenhum cliente encontrado.");
+
+                    App.pausa();
+                    break;
+                case 3:
+                    Console.Clear();
+                    Console.WriteLine("Filtrar por IMC:");
+                    Console.Write("IMC minimo: ");
+                    double imcBase = double.Parse(Console.ReadLine() ?? "0");
+                    
+                    Console.Clear();
+                    Console.WriteLine("Clientes encontrado:");
+                    List<Cliente> clientesFiltrados2 = _clientes
+                        .Where(cliente => cliente.Peso / Math.Pow(cliente.Altura, 2) > imcBase)
+                        .OrderBy(cliente => cliente.Peso / Math.Pow(cliente.Altura, 2)).ToList();
+                    
+                    if (clientesFiltrados2.Count > 0)
+                    {
+                        foreach (Cliente cliente in clientesFiltrados2)
+                        {
+                            cliente.imprimeCliente();
+                        }
+                    }
+                    else Console.WriteLine("Nenhum cliente encontrado.");
                     App.pausa();
                     break;
                 case 0:
