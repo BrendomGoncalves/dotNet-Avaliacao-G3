@@ -885,6 +885,7 @@ public class Academia
         }
         Console.WriteLine();
     }
+
     public void listarTreinosCliente(Cliente cliente)
     {
 
@@ -911,3 +912,4 @@ public class Academia
             }
         }
     }
+}
