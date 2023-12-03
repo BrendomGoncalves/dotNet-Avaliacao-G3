@@ -581,4 +581,14 @@ public class Academia
             }
         } while (opcao != 0);
     }
-}
+    public void listarTreinosTreinador(Treinador treinador)
+    {
+        Console.WriteLine($"Tipo\tObjetivo\tDuracao\tDataInicio\tVencimento\tTreinador");
+        foreach (Treino treino in _treinos)
+        {
+            if (treino.Treinador == treinador)
+            {
+                treino.imprimeTreino();
+            }
+        }
+    }
