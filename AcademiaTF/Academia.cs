@@ -48,6 +48,7 @@ public class Academia
             Console.WriteLine("== Menu Treinadores ==");
             Console.WriteLine("1. Gerenciar Treinadores");
             Console.WriteLine("2. Filtrar por Idade");
+            Console.WriteLine("3. Media de notas de treinos");
             Console.WriteLine("0. Voltar");
             Console.Write("> ");
             try
