@@ -581,6 +581,18 @@ public class Academia
             }
         } while (opcao != 0);
     }
+    public void listarExercicios()
+    {
+        Console.Clear();
+        Console.WriteLine("Lista de Exercício:");
+        Console.WriteLine("ID\tGRUPO MUSCULAR\t\tSÉRIES\t\tREPETIÇÕES\tINTERVALO DE DESCANSO (s)");
+        for (int i = 0; i < _exercicios.Count; i++)
+        {
+            Console.Write($"{i}\t");
+            _exercicios[i].imprimeExercicio();
+        }
+        Console.WriteLine();
+    }
     public void listarTreinosCliente(Cliente cliente)
     {
 
