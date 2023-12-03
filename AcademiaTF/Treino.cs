@@ -120,4 +120,14 @@ public class Treino
         _exercicios?.Add(exercicio);
     }
 
+    public void adicionarCliente(Cliente cliente)
+    {
+        if (_clientes == null)
+        {
+            _clientes?.Add((cliente, -1));
+            return;
+        }
+        if (_clientes.Any(c => c?.Item1 == cliente)) throw new Exception("Cliente já cadastrado");
+        _clientes?.Add((cliente, -1)); // -1 = sem avaliação
+    }
 }
