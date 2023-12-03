@@ -10,16 +10,22 @@ public class Treino
     }
     public Treino(string tipo, string objetivo, int duracao, DateTime dataInicio, int vencimento, Treinador? treinador)
     {
-        Tipo = tipo;
-        Objetivo = objetivo;
-        Duracao = duracao;
-        DataInicio = dataInicio;
-        Vencimento = vencimento;
-        Treinador = treinador;
-        _exercicios = new List<Exercicio>();
-        _clientes = new List<(Cliente, int)?>();
+        try{
+            Tipo = tipo;
+            Objetivo = objetivo;
+            Duracao = duracao;
+            DataInicio = dataInicio;
+            Vencimento = vencimento;
+            Treinador = treinador;
+            _exercicios = new List<Exercicio>();
+            _clientes = new List<(Cliente, int)?>();
+        }catch(Exception e){
+            Console.WriteLine("errou e nao cria");
+            throw new Exception(e.Message);
+        }
+        
     }
-    
+
     // Atributos
     private string? _tipo;
     private string? _objetivo;
@@ -29,7 +35,7 @@ public class Treino
     private Treinador? _treinador;
     private List<Exercicio>? _exercicios;
     private List<(Cliente,int)?>? _clientes;
-    
+
     // Propriedades
     public string? Tipo
     {
@@ -86,7 +92,7 @@ public class Treino
             if (value == null) throw new Exception("Treinador não pode ser nulo");
             _treinador = value;
         }
-        
+
     }
 
     public List<(Cliente, int)?>? Clientes
@@ -96,7 +102,7 @@ public class Treino
     }
 
 
-    
+
     // Metodos
     public int tamanhoExercicios()
     {
@@ -130,6 +136,54 @@ public class Treino
         if (_clientes.Any(c => c?.Item1 == cliente)) throw new Exception("Cliente já cadastrado");
         _clientes?.Add((cliente, -1)); // -1 = sem avaliação
     }
+
+    public static Treino cadastrarTreino(Treinador treinador)
+    {
+        Console.Clear();
+        Console.WriteLine("CADASTRAR TREINO:");
+        Console.Write("Tipo: ");
+        string? tipo = Console.ReadLine();
+
+        Console.Write("Objetivo: ");
+        string? objetivo = Console.ReadLine();
+        Console.Write("Duração (em meses): ");
+        int duracao;
+        try
+        {
+            duracao = int.Parse(Console.ReadLine() ?? "0");
+
+        }
+        catch
+        {
+            throw new Exception("Duração inválida");
+        }
+
+        Console.Write("Data de início [ex: XX/XX/XXXX]: ");
+        string? dataInicio = Console.ReadLine();
+        DateTime dataConvertida;
+        if (!DateTime.TryParseExact(dataInicio, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dataConvertida))
+        {
+            throw new Exception("Data inválida!");
+        }
+        if (dataConvertida < DateTime.Now) throw new Exception("Data de início não pode ser anterior a data atual");
+        Console.Write("Vencimento (em meses): ");
+        int vencimento = int.Parse(Console.ReadLine() ?? "0");
+        try
+        {
+            Treino treino = new(tipo!, objetivo!, duracao, dataConvertida, vencimento, treinador);
+            Console.WriteLine("Treino cadastrado com sucesso!");
+            return treino;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            Console.WriteLine("Pressione qualquer tecla para continuar...");
+            Console.ReadKey();
+            throw new Exception(e.Message);
+        }
+
+    }
+
     public void imprimeTreino()
     {
         Console.WriteLine($"{Tipo}\t{Objetivo}\t{Duracao}\t{DataInicio:dd/MM/yyyy}\t{Vencimento}\t{Treinador?.Nome}");
