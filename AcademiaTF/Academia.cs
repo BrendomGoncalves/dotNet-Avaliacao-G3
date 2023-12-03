@@ -89,7 +89,7 @@ public class Academia
                     App.pausa();
                     break;
                 case 3:
-                    
+
                     break;
                 case 0:
                     break;
@@ -237,9 +237,9 @@ public class Academia
             }
         } while (opcao != 0);
     }
+
     private void gerenciaExercicios()
     {
-
         int opcao;
         do
         {
@@ -299,7 +299,9 @@ public class Academia
                     grupoMuscular = Console.ReadLine();
                     try
                     {
-                        Exercicio uExercicio = _exercicios.Find(exercicio => exercicio.GrupoMuscular == grupoMuscular) ?? throw new Exception("Exercício não encontrado");
+                        Exercicio uExercicio =
+                            _exercicios.Find(exercicio => exercicio.GrupoMuscular == grupoMuscular) ??
+                            throw new Exception("Exercício não encontrado");
                         uExercicio.editarExercicio();
                         Console.WriteLine("Exercício editado com sucesso!");
                     }
@@ -318,8 +320,9 @@ public class Academia
                     grupoMuscular = Console.ReadLine();
                     try
                     {
-                        Exercicio rExercicio = _exercicios.Find(exercicio => exercicio.GrupoMuscular == grupoMuscular) ??
-                                               throw new Exception("Treinador não encontrado");
+                        Exercicio rExercicio =
+                            _exercicios.Find(exercicio => exercicio.GrupoMuscular == grupoMuscular) ??
+                            throw new Exception("Treinador não encontrado");
                         _exercicios.Remove(rExercicio);
                         Console.WriteLine("Exercício removido com sucesso!");
                     }
@@ -338,8 +341,8 @@ public class Academia
                     break;
             }
         } while (opcao != 0);
-
     }
+
     public void menuCliente()
     {
         int opcao;
@@ -411,6 +414,7 @@ public class Academia
                         }
                     }
                     else Console.WriteLine("Nenhum cliente encontrado.");
+
                     App.pausa();
                     break;
                 case 4:
@@ -546,24 +550,25 @@ public class Academia
         Console.WriteLine("Treinadores e clientes aniversariantes do mes");
         Console.Write("Digite o mes que deseja consultar (entre 1-12): ");
         int mesAniversario = int.Parse(Console.ReadLine() ?? "0");
-                   
+
         List<Treinador> treinadoresAniversariantes = _treinadores.Where(treinador =>
-        treinador.Nascimento.Month == mesAniversario).ToList();
+            treinador.Nascimento.Month == mesAniversario).ToList();
         List<Cliente> clientesAniversariantes = _clientes.Where(cliente =>
-        cliente.Nascimento.Month == mesAniversario).ToList();
+            cliente.Nascimento.Month == mesAniversario).ToList();
         Console.WriteLine("Treinadores aniversariantes:");
         if (treinadoresAniversariantes.Count > 0)
         {
-        foreach (Treinador treinador in treinadoresAniversariantes)
+            foreach (Treinador treinador in treinadoresAniversariantes)
             {
-            treinador.imprimeTreinador();
+                treinador.imprimeTreinador();
             }
         }
         else Console.WriteLine("Nenhum treinador encontrado.");
+
         Console.WriteLine("Clientes aniversariantes:");
         if (clientesAniversariantes.Count > 0)
         {
-        foreach (Cliente cliente in clientesAniversariantes)
+            foreach (Cliente cliente in clientesAniversariantes)
             {
                 cliente.imprimeCliente();
             }
