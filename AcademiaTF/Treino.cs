@@ -130,4 +130,8 @@ public class Treino
         if (_clientes.Any(c => c?.Item1 == cliente)) throw new Exception("Cliente já cadastrado");
         _clientes?.Add((cliente, -1)); // -1 = sem avaliação
     }
+    public void imprimeTreino()
+    {
+        Console.WriteLine($"{Tipo}\t{Objetivo}\t{Duracao}\t{DataInicio:dd/MM/yyyy}\t{Vencimento}\t{Treinador?.Nome}");
+    }
 }
