@@ -279,7 +279,7 @@ public class Academia
                 case 2:
                     Console.Clear();
                     Console.WriteLine("Lista de Exercício:");
-                    Console.WriteLine("GRUPO MUSCULAR\t\tSÉRIES\t\tREPETIÇÕES\tINTERVALO DE DESCANSO (s)");
+                    Console.WriteLine("GRUPO MUSCULAR\tSÉRIES\tREPETIÇÕES\tINTERVALO DE DESCANSO (s)");
                     foreach (Exercicio exercicio in _exercicios)
                     {
                         exercicio.imprimeExercicio();
@@ -419,7 +419,7 @@ public class Academia
                 case 5:
                     Console.Clear();
                     Console.WriteLine("Clientes por Idade Descrescente:");
-                    List<Cliente> clientesOrdenados2 = _clientes.OrderByDescending(c => c.Nascimento).ToList();
+                    List<Cliente> clientesOrdenados2 = _clientes.OrderBy(c => c.Nascimento).ToList();
                     foreach (Cliente cliente in clientesOrdenados2) cliente.imprimeCliente();
                     App.pausa();
                     break;
