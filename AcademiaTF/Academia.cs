@@ -581,6 +581,19 @@ public class Academia
             }
         } while (opcao != 0);
     }
+    public void listarClientes()
+    {
+        Console.Clear();
+        Console.WriteLine("Lista de Clientes:");
+        Console.WriteLine("ID\tCPF\t\tDATA DE NASCIMENTO\tALTURA\tPESO\tNOME");
+        for (int i = 0; i < _clientes.Count; i++)
+        {
+            Console.Write($"{i}\t");
+            _clientes[i].imprimeCliente();
+        }
+        Console.WriteLine();
+    }
+
     public void listarTreinos()
     {
         Console.WriteLine($"ID\tTreinador\tClientes\tExercicios\tTipo\tObjetivo\tDuracao\tDataInicio\tVencimento");
