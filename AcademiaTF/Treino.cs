@@ -36,7 +36,7 @@ public class Treino
         get => _tipo;
         set
         {
-            if (string.IsNullOrWhiteSpace(value)) throw new Exception("Especie não pode ser nulo");
+            if (string.IsNullOrWhiteSpace(value)) throw new Exception("Tipo não pode ser nulo");
             _tipo = value;
         }
     }
@@ -55,6 +55,7 @@ public class Treino
         set
         {
             if (value < 0) throw new Exception("Duração não pode ser negativa");
+            if (value == 0) throw new Exception("Duração não pode ser 0");
             _duracao = value;
         }
     }
@@ -63,7 +64,7 @@ public class Treino
         get => _dataInicio;
         set
         {
-            if (value > DateTime.Now) throw new Exception("Data de início inválida");
+            if (value < DateTime.Now) throw new Exception("Data de início não pode ser anterior a data atual");
             _dataInicio = value;
         }
     }
@@ -73,6 +74,7 @@ public class Treino
         set
         {
             if (value < 0) throw new Exception("Vencimento não pode ser negativo");
+            if (value == 0) throw new Exception("Vencimento não pode ser 0");
             _vencimento = value;
         }
     }
