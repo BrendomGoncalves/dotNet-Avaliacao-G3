@@ -88,6 +88,14 @@ public class Treino
         }
         
     }
+
+    public List<(Cliente, int)?>? Clientes
+    {
+        get => _clientes;
+
+    }
+
+
     
     // Metodos
     public int tamanhoExercicios()
