@@ -106,4 +106,18 @@ public class Treino
     {
         return _clientes?.Count ?? 0;
     }
+
+    public void adicionarExercicio(Exercicio exercicio)
+
+    {
+        if (_exercicios == null)
+        {
+            _exercicios?.Add(exercicio);
+            return;
+        }
+
+        if (_exercicios.Any(e => e == exercicio)) throw new Exception("Exercício já cadastrado");
+        _exercicios?.Add(exercicio);
+    }
+
 }
