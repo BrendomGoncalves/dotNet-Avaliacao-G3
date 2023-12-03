@@ -582,6 +582,259 @@ public class Academia
         } while (opcao != 0);
     }
 
+    public void menuTreino()
+    {
+        int opcao;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine("== Menu Treinos ==");
+            Console.WriteLine("1. Cadastrar Treino");
+            Console.WriteLine("2. Vincular Cliente a Treino");
+            Console.WriteLine("3. Vincular Exercicio a Treino");
+            Console.WriteLine("4. Adicionar avaliação");
+            Console.WriteLine("5. Listar todos os Treinos");
+            Console.WriteLine("6. Listar treinos por Cliente");
+            Console.WriteLine("7. Listar treinos por Treinador");
+            Console.WriteLine("0. Voltar");
+            Console.Write("> ");
+            try
+            {
+                opcao = int.Parse(Console.ReadLine() ?? "0");
+            }
+            catch
+            {
+                opcao = -1;
+            }
+
+            switch (opcao)
+            {
+                case 1:
+                    listarTreinadores();
+                    Console.Write("Escolha o ID do treinador responsável: ");
+                    Treinador treinador;
+                    try
+                    {
+                        int indexTreinador = int.Parse(Console.ReadLine() ?? "-1");
+                        treinador = _treinadores[indexTreinador];
+
+
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Treinador não encontrado");
+                        App.pausa();
+                        break;
+                    }
+                    try
+                    {
+                        Treino t1 = Treino.cadastrarTreino(treinador);
+                        _treinos.Add(t1);
+                        Console.WriteLine("Treino cadastrado com sucesso!");
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                        Console.WriteLine("Cadastro Cancelado! Realize a operacao novamente");
+                        App.pausa();
+                    }
+
+
+                    break;
+                case 2:
+                    if (_treinos.Count == 0)
+                    {
+                        Console.WriteLine("Nenhum treino cadastrado");
+                        App.pausa();
+                        break;
+                    }
+                    if (_clientes.Count == 0)
+                    {
+                        Console.WriteLine("Nenhum cliente cadastrado");
+                        App.pausa();
+                        break;
+                    }
+                    listarClientes();
+                    Console.Write("Escolha o ID do cliente: ");
+                    Cliente cliente;
+                    try
+                    {
+                        int indexCliente = int.Parse(Console.ReadLine() ?? "-1");
+                        cliente = _clientes[indexCliente];
+
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Cliente não encontrado");
+                        App.pausa();
+                        break;
+                    }
+                    listarTreinos();
+                    Console.Write("Escolha o ID do treino: ");
+                    Treino treino;
+                    try
+                    {
+                        int indexTreino = int.Parse(Console.ReadLine() ?? "-1");
+                        treino = _treinos[indexTreino];
+
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Treino não encontrado");
+                        App.pausa();
+                        break;
+                    }
+                    treino.adicionarCliente(cliente);
+
+
+                    break;
+
+                case 3:
+                    listarExercicios();
+                    Console.Write("Escolha o ID do exercicio: ");
+                    Exercicio exercicio;
+                    try
+                    {
+                        int indexExercicio = int.Parse(Console.ReadLine() ?? "-1");
+                        exercicio = _exercicios[indexExercicio];
+
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Exercicio não encontrado");
+                        App.pausa();
+                        break;
+                    }
+                    listarTreinos();
+                    Console.Write("Escolha o ID do treino: ");
+                    Treino treino2;
+                    try
+                    {
+                        int indexTreino = int.Parse(Console.ReadLine() ?? "-1");
+                        treino2 = _treinos[indexTreino];
+
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Treino não encontrado");
+                        App.pausa();
+                        break;
+                    }
+                    treino2.adicionarExercicio(exercicio);
+                    break;
+                case 4:
+                    listarClientes();
+                    Console.Write("Escolha o ID do cliente que deseja inserir avaliação: ");
+                    Cliente cliente1;
+                    try
+                    {
+                        int indexCliente = int.Parse(Console.ReadLine() ?? "-1");
+                        cliente1 = _clientes[indexCliente];
+
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Cliente não encontrado");
+                        App.pausa();
+                        break;
+                    }
+                    if (_treinos.Any(t => t.Clientes?.Any(c => c?.Item1 == cliente1) ?? false))
+                    {
+                        Console.WriteLine("Cliente não faz parte de nenhum treino");
+                        App.pausa();
+                        break;
+                    }
+                    listarTreinosCliente(cliente1);
+                    Console.Write("Escolha o ID do treino: ");
+                    Treino treino1;
+                    try
+                    {
+                        int indexTreino = int.Parse(Console.ReadLine() ?? "-1");
+                        treino1 = _treinos[indexTreino];
+
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Treino não encontrado");
+                        App.pausa();
+                        break;
+                    }
+                    if (!treino1.Clientes?.Any(c => c?.Item1 == cliente1) ?? false)
+                    {
+                        Console.WriteLine("Cliente não faz parte do treino");
+                        App.pausa();
+                        break;
+                    }
+                    Console.Write("Digite a avaliação: ");
+                    try
+                    {
+                        int avaliacao = int.Parse(Console.ReadLine() ?? "-1");
+                        if (avaliacao < 0 || avaliacao > 10 || avaliacao == -1) throw new Exception("Avaliação inválida");
+                        treino1.adicionarAvaliacao(cliente1, avaliacao);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Avaliação inválida");
+                        App.pausa();
+                        break;
+                    }
+                    break;
+
+                case 5:
+                    listarTreinos();
+                    App.pausa();
+                    break;
+
+                case 6:
+                    listarClientes();
+                    Console.Write("Escolha o ID do cliente: ");
+                    Cliente cliente2;
+                    try
+                    {
+                        int indexCliente = int.Parse(Console.ReadLine() ?? "-1");
+                        cliente2 = _clientes[indexCliente];
+
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Cliente não encontrado");
+                        App.pausa();
+                        break;
+                    }
+                    listarTreinosCliente(cliente2);
+                    App.pausa();
+                    break;
+
+                case 7:
+                    listarTreinadores();
+                    Console.Write("Escolha o ID do treinador: ");
+                    Treinador treinador2;
+                    try
+                    {
+                        int indexTreinador = int.Parse(Console.ReadLine() ?? "-1");
+                        treinador2 = _treinadores[indexTreinador];
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Treinador não encontrado");
+                        App.pausa();
+                        break;
+                    }
+                    listarTreinosTreinador(treinador2);
+                    App.pausa();
+
+                    break;
+
+                case 0:
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida!");
+                    App.pausa();
+                    break;
+            }
+        } while (opcao != 0);
+    }
+
     public void listarTreinadores()
     {
         Console.Clear();
