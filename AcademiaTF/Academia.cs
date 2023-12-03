@@ -581,6 +581,21 @@ public class Academia
             }
         } while (opcao != 0);
     }
+    public void listarTreinosCliente(Cliente cliente)
+    {
+
+        Console.WriteLine($"Tipo\tObjetivo\tDuracao\tDataInicio\tVencimento\tTreinador");
+        for (int i = 0; i < _treinos.Count; i++)
+        {
+            if (_treinos[i].Clientes?.Any(c => c?.Item1 == cliente) ?? false)
+            {
+                Console.Write($"{i}\t");
+                _treinos[i].imprimeTreino();
+            }
+            _exercicios[i].imprimeExercicio();
+        }
+        Console.WriteLine();
+    }
     public void listarTreinosTreinador(Treinador treinador)
     {
         Console.WriteLine($"Tipo\tObjetivo\tDuracao\tDataInicio\tVencimento\tTreinador");
