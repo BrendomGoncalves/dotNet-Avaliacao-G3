@@ -43,8 +43,9 @@ public class Treinador : Pessoa
             Console.WriteLine("Nascimento [ex: XX/XX/XXXX]: ");
             nascimento = Console.ReadLine();
         }
-
-        Nascimento = Convert.ToDateTime(nascimento);
+        DateTime dataConvertida;
+        DateTime.TryParseExact(nascimento, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dataConvertida);
+        Nascimento = dataConvertida;
 
         Console.Write("CPF [ex: XXXXXXXXXXXX]: ");
         string? cpf = Console.ReadLine();
@@ -57,7 +58,7 @@ public class Treinador : Pessoa
 
         Cpf = cpf;
 
-        Console.Write("CREF [ex: XXXXXX-X/XX]:");
+        Console.Write("CREF [ex: 000000-0/AA]:");
         string? cref = Console.ReadLine();
         while (!validaCref(cref!))
         {
