@@ -536,4 +536,35 @@ public class Academia
             }
         } while (opcao != 0);
     }
+
+    public void MesAniversariantes()
+    {
+        Console.Clear();
+        Console.WriteLine("Treinadores e clientes aniversariantes do mes");
+        Console.Write("Digite o mes que deseja consultar (entre 1-12): ");
+        int mesAniversario = int.Parse(Console.ReadLine() ?? "0");
+                   
+        List<Treinador> treinadoresAniversariantes = _treinadores.Where(treinador =>
+        treinador.Nascimento.Month == mesAniversario).ToList();
+        List<Cliente> clientesAniversariantes = _clientes.Where(cliente =>
+        cliente.Nascimento.Month == mesAniversario).ToList();
+        Console.WriteLine("Treinadores aniversariantes:");
+        if (treinadoresAniversariantes.Count > 0)
+        {
+        foreach (Treinador treinador in treinadoresAniversariantes)
+            {
+            treinador.imprimeTreinador();
+            }
+        }
+        else Console.WriteLine("Nenhum treinador encontrado.");
+        Console.WriteLine("Clientes aniversariantes:");
+        if (clientesAniversariantes.Count > 0)
+        {
+        foreach (Cliente cliente in clientesAniversariantes)
+            {
+                cliente.imprimeCliente();
+            }
+        }
+        else Console.WriteLine("Nenhum cliente encontrado.");
+    }
 }
