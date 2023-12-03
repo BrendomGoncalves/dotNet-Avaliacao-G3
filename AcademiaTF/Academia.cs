@@ -176,8 +176,9 @@ public class Academia
                         _treinadores.Add(novoTreinador);
                         Console.WriteLine("Treinador Cadastrado com sucesso!");
                     }
-                    catch
+                    catch (Exception e)
                     {
+                        Console.WriteLine(e.Message);
                         Console.WriteLine("Cadastro Cancelado! Realize a operacao novamente");
                         App.pausa();
                     }
