@@ -9,6 +9,9 @@ public class Academia
         _exercicios = new List<Exercicio>();
         _treinadores = new List<Treinador>();
         _clientes = new List<Cliente>();
+        // criarTreinadores();
+        // criarClientes();
+        // criarExercicios();
     }
 
     // Atributos
@@ -16,6 +19,48 @@ public class Academia
     private List<Exercicio> _exercicios;
     private List<Treinador> _treinadores;
     private List<Cliente> _clientes;
+
+    //criando treinadores
+    public void criarTreinadores()
+    {
+        Treinador t1 = new Treinador("João", new DateTime(1990, 10, 10), "12345678901", "123456");
+        Treinador t2 = new Treinador("Maria", new DateTime(1990, 10, 10), "12345678902", "123456");
+        Treinador t3 = new Treinador("José", new DateTime(1990, 10, 10), "12345678903", "123456");
+        Treinador t4 = new Treinador("Ana", new DateTime(1990, 10, 10), "12345678904", "123456");
+        Treinador t5 = new Treinador("Pedro", new DateTime(1990, 10, 10), "12345678905", "123456");
+        _treinadores.Add(t1);
+        _treinadores.Add(t2);
+        _treinadores.Add(t3);
+        _treinadores.Add(t4);
+        _treinadores.Add(t5);
+    }
+    //criando clientes
+    public void criarClientes()
+    {
+        Cliente c1 = new Cliente("igor", new DateTime(1990, 10, 10), "12345678901", 18, 80);
+        Cliente c2 = new Cliente("lima", new DateTime(1990, 10, 10), "12345678902", 180, 80);
+        Cliente c3 = new Cliente("rocha", new DateTime(1990, 10, 10), "12345678903", 1, 80);
+        _clientes.Add(c1);
+        _clientes.Add(c2);
+        _clientes.Add(c3);
+    }
+
+    //craindo exercicios
+    public void criarExercicios()
+    {
+        Exercicio e1 = new Exercicio("Pernas", 3, 10, 30);
+        Exercicio e2 = new Exercicio("Braços", 3, 10, 30);
+        Exercicio e3 = new Exercicio("Peito", 3, 10, 30);
+        Exercicio e4 = new Exercicio("Costas", 3, 10, 30);
+        Exercicio e5 = new Exercicio("Ombros", 3, 10, 30);
+        Exercicio e6 = new Exercicio("Abdomen", 3, 10, 30);
+        _exercicios.Add(e1);
+        _exercicios.Add(e2);
+        _exercicios.Add(e3);
+        _exercicios.Add(e4);
+        _exercicios.Add(e5);
+        _exercicios.Add(e6);
+    }
 
     // Propriedades
     public List<Treino> Treinos
