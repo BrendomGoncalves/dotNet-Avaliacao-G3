@@ -134,4 +134,20 @@ public class Treino
     {
         Console.WriteLine($"{Tipo}\t{Objetivo}\t{Duracao}\t{DataInicio:dd/MM/yyyy}\t{Vencimento}\t{Treinador?.Nome}");
     }
+
+    public void adicionarAvaliacao(Cliente cliente, int avaliacao)
+    {
+        if (_clientes == null)
+        {
+            throw new Exception("Pensar no que colocar aqui");
+        }
+        int posicao = _clientes.FindIndex(c => c?.Item1 == cliente);
+        if (posicao == -1) throw new Exception("Cliente não cadastrado");
+        if (_clientes[posicao]?.Item2 != -1) throw new Exception("Avaliação ja registrada");
+        _clientes[posicao] = (cliente, avaliacao);
+
+
+    }
+
+
 }
