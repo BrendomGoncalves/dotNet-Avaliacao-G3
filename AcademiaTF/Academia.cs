@@ -581,6 +581,18 @@ public class Academia
             }
         } while (opcao != 0);
     }
+    public void listarTreinos()
+    {
+        Console.WriteLine($"ID\tTreinador\tClientes\tExercicios\tTipo\tObjetivo\tDuracao\tDataInicio\tVencimento");
+        int i = 0;
+        foreach (Treino treino in _treinos)
+        {
+
+            Console.WriteLine($"{i}\t{treino.Treinador?.Nome}\t{treino.Clientes?.Count}\t{treino.tamanhoExercicios()}\t{treino.Tipo}\t{treino.Objetivo}\t{treino.Duracao}\t{treino.DataInicio}\t{treino.Vencimento}");
+            i++;
+        }
+    }
+
     public void listarExercicios()
     {
         Console.Clear();
