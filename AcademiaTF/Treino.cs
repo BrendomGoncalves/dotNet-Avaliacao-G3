@@ -25,7 +25,6 @@ public class Treino
         }
         
     }
-
     // Atributos
     private string? _tipo;
     private string? _objetivo;
@@ -94,27 +93,18 @@ public class Treino
         }
 
     }
-
     public List<(Cliente, int)?>? Clientes
     {
         get => _clientes;
 
     }
-
-
-
     // Metodos
     public int tamanhoExercicios()
     {
         return _exercicios?.Count ?? 0;
     }
-    public int tamanhoClientes()
-    {
-        return _clientes?.Count ?? 0;
-    }
 
     public void adicionarExercicio(Exercicio exercicio)
-
     {
         if (_exercicios == null)
         {
@@ -199,9 +189,5 @@ public class Treino
         if (posicao == -1) throw new Exception("Cliente não cadastrado");
         if (_clientes[posicao]?.Item2 != -1) throw new Exception("Avaliação ja registrada");
         _clientes[posicao] = (cliente, avaliacao);
-
-
     }
-
-
 }
