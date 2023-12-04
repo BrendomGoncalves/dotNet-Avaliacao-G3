@@ -570,4 +570,34 @@ public class Academia
         }
         else Console.WriteLine("Nenhum cliente encontrado.");
     }
+
+    //treinos cujo objetivo contenham determinada palavra.
+    public void TreinosPorPalavraChave(string palavraChave)
+    {
+        Console.WriteLine($" Aqui estão os treinos com objetivo contendo a palavra-chave '{palavraChave}'");
+
+        var treinoPalavraChave = Treinos.Where(t => t.Objetivo.Contains(palavraChave));
+
+        foreach (var Treino in treinoPalavraChave)
+        {
+            Console.WriteLine($"Treino: {Treino.Tipo}, Objetivo: {Treino.Objetivo}");
+        }
+    }
+
+    public void ExercicioTop10 ()
+    {
+        Console.WriteLine("");
+
+        var exercicioMaisUtilizado = Treinos.SelectMany(t => t._exercicio);
+            .GroupBy(g => g.GrupoMuscular)
+            .Select(e => new {NomeExercicio = e.Key, Quantidade = e.Count()});
+            .OrderByDescending(e => e.Quantidade)
+            .Take(10);
+        foreach (var exercicio in exercicioMaisUtilizado)
+        {
+            Console.WriteLine($"Exercício: {exercici}")
+        }
+    }
 }
+
+
