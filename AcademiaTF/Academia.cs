@@ -631,6 +631,7 @@ public class Academia
             Console.WriteLine("5. Listar todos os Treinos");
             Console.WriteLine("6. Listar treinos por Cliente");
             Console.WriteLine("7. Listar treinos por Treinador");
+            Console.WriteLine("8. Treinos em ordem crescente da data de vencimento");
             Console.WriteLine("0. Voltar");
             Console.Write("> ");
             try
@@ -858,6 +859,21 @@ public class Academia
                     listarTreinosTreinador(treinador2);
                     App.pausa();
 
+                    break;
+
+                case 8:
+                    Console.Clear();
+                    Console.WriteLine("Treinos em ordem crescente pela quantidade de dias até o vencimento");
+                    List<Treino> treinoVencimento = _treinos.Where(treino =>
+                    .OrderBy(treino.vencimento - DateTime.Now.TotalDays)).ToList();
+                    if (treinoVencimento.Count > 0)
+                    {
+                        foreach (Treino treino in treinoVencimento)
+                        {
+                            treino.listarTreinos();
+                        }
+                    }
+                    else Console.WriteLine("Nenhum treino encontrado.");
                     break;
 
                 case 0:
