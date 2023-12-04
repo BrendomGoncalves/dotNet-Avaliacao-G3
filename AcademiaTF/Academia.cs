@@ -9,16 +9,19 @@ public class Academia
         Exercicios = new List<Exercicio>();
         Treinadores = new List<Treinador>();
         Clientes = new List<Cliente>();
-        
+
         #region MetodosParaTeste
+
         criarTreinadores();
         criarClientes();
         criarExercicios();
         criarTreinos();
+
         #endregion
     }
-    
+
     #region MetodosParaTeste
+
     //criando treinadores
     public void criarTreinadores()
     {
@@ -33,6 +36,7 @@ public class Academia
         Treinadores.Add(t4);
         Treinadores.Add(t5);
     }
+
     //criando clientes
     public void criarClientes()
     {
@@ -43,6 +47,7 @@ public class Academia
         Clientes.Add(c2);
         Clientes.Add(c3);
     }
+
     //criando exercicios
     public void criarExercicios()
     {
@@ -59,19 +64,26 @@ public class Academia
         Exercicios.Add(e5);
         Exercicios.Add(e6);
     }
+
     public void criarTreinos()
     {
-        Treino t1 = new Treino("Treino 1", "Perda peso", 30, new DateTime(2023, 12, 15), 5, Treinadores[0], Exercicios.Take(4).ToList());
-        Treino t2 = new Treino("Treino 2", "Ganho de massa", 25, new DateTime(2023, 12, 20), 6, Treinadores[1], Exercicios.Take(4).ToList());
-        Treino t3 = new Treino("Treino 3", "Fortalecimento", 35, new DateTime(2024, 1, 6), 7, Treinadores[2], Exercicios.Take(4).ToList());
-        Treino t4 = new Treino("Treino 4", "Jogador", 50, new DateTime(2024, 2, 20), 8, Treinadores[3], Exercicios.Take(4).ToList());
-        Treino t5 = new Treino("Treino 5", "Corrida", 45, new DateTime(2023, 12, 10), 4, Treinadores[4], Exercicios.Take(4).ToList());
+        Treino t1 = new Treino("Treino 1", "Perda peso", 30, new DateTime(2023, 12, 15), 5, Treinadores[0],
+            Exercicios.Take(4).ToList());
+        Treino t2 = new Treino("Treino 2", "Ganho de massa", 25, new DateTime(2023, 12, 20), 6, Treinadores[1],
+            Exercicios.Take(4).ToList());
+        Treino t3 = new Treino("Treino 3", "Fortalecimento", 35, new DateTime(2024, 1, 6), 7, Treinadores[2],
+            Exercicios.Take(4).ToList());
+        Treino t4 = new Treino("Treino 4", "Jogador", 50, new DateTime(2024, 2, 20), 8, Treinadores[3],
+            Exercicios.Take(4).ToList());
+        Treino t5 = new Treino("Treino 5", "Corrida", 45, new DateTime(2023, 12, 10), 4, Treinadores[4],
+            Exercicios.Take(4).ToList());
         Treinos.Add(t1);
-        Treinos.Add(t1);
-        Treinos.Add(t1);
-        Treinos.Add(t1);
-        Treinos.Add(t1);
+        Treinos.Add(t2);
+        Treinos.Add(t3);
+        Treinos.Add(t4);
+        Treinos.Add(t5);
     }
+
     #endregion
 
     // Propriedades
@@ -134,7 +146,24 @@ public class Academia
                     App.pausa();
                     break;
                 case 3:
-                    
+                    Console.Clear();
+                    Console.WriteLine("Relatório de Treinadores em Ordem Decrescente da Média de Notas dos Treinos:");
+                    var mediaTreinadores = Treinadores.Select(treinador =>
+                    {
+                        var treinosDoTreinador = Treinos.Where(treino =>
+                            treino.Treinador == treinador && treino.MediaAvaliacoes() != -1);
+                        double mediaNotas = treinosDoTreinador.Any()
+                            ? treinosDoTreinador.Average(treino => treino.MediaAvaliacoes())
+                            : -1;
+                        return new { Treinador = treinador, MediaNotas = mediaNotas };
+                    }).OrderByDescending(item => item.MediaNotas);
+
+                    foreach (var item in mediaTreinadores)
+                    {
+                        Console.WriteLine(
+                            $"Treinador: {item.Treinador.Nome}, Média de Notas: {(item.MediaNotas != -1 ? item.MediaNotas.ToString() : "N/A")}");
+                    }
+
                     break;
                 case 0:
                     break;
@@ -273,6 +302,7 @@ public class Academia
             {
                 opcao = -1;
             }
+
             switch (opcao)
             {
                 case 1:
@@ -290,7 +320,9 @@ public class Academia
                             .Take(10)
                             .Select(grupo => grupo.Key);
                         foreach (var exercicio in exerciciosMaisUtilizados) Console.WriteLine(exercicio);
-                    } else Console.WriteLine("Nenhum treino criado");
+                    }
+                    else Console.WriteLine("Nenhum treino criado");
+
                     App.pausa();
                     break;
                 case 0:
@@ -642,6 +674,7 @@ public class Academia
             }
         }
         else Console.WriteLine("Nenhum cliente encontrado.");
+
         App.pausa();
     }
 
@@ -919,6 +952,7 @@ public class Academia
                         }
                     }
                     else Console.WriteLine("Nenhum treino encontrado.");
+
                     App.pausa();
                     break;
                 case 0:
