@@ -4,7 +4,7 @@ public class Cliente : Pessoa
 {
     // Construtores
     public Cliente() { }
-    public Cliente(string nome, DateTime nascimento, string cpf, float altura, float peso)
+    public Cliente(string nome, DateTime nascimento, string cpf, int altura, int peso)
     {
         Nome = nome;
         Nascimento = nascimento;
@@ -14,25 +14,28 @@ public class Cliente : Pessoa
     }
     
     // Atributos
-    private float _altura;
-    private float _peso;
+    private int _altura;
+    private int _peso;
     
     // Propriedades
-    public float Altura
+    public int Altura
     {
         get => _altura;
         set
         {
             if (value < 0) throw new Exception("Altura não pode ser negativa");
+            if (value > 300) throw new Exception("Altura não pode ser maior que 3 metros");
+            if (value == 0) throw new Exception("Altura não pode ser zero");
             _altura = value;
         }
     }
-    public float Peso
+    public int Peso
     {
         get => _peso;
         set
         {
             if (value < 0) throw new Exception("Peso não pode ser negativo");
+            if (value == 0) throw new Exception("Peso não pode ser zero");
             _peso = value;
         }
     }
@@ -53,7 +56,9 @@ public class Cliente : Pessoa
             Console.Write("Nascimento [ex: XX/XX/XXXX]: ");
             nascimento = Console.ReadLine();
         }
-        Nascimento = Convert.ToDateTime(nascimento);
+        DateTime dataConvertida;
+        DateTime.TryParseExact(nascimento, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dataConvertida);
+        Nascimento = dataConvertida;
 
         Console.Write("CPF [ex: XXXXXXXXXXXX]: ");
         string? cpf = Console.ReadLine();
@@ -65,11 +70,25 @@ public class Cliente : Pessoa
         }
         Cpf = cpf;
 
-        Console.Write("Altura [ex: X,XX]: ");
-        Altura = float.Parse(Console.ReadLine() ?? "0.00");
+        Console.Write("Altura em cm[ex:180]: ");
+        try
+        {
+            Altura = int.Parse(Console.ReadLine() ?? "0");
+        }
+        catch
+        {
+            throw new Exception("Altura inválida");
+        }
         
-        Console.Write("Peso [ex: XX,X]: ");
-        Peso = float.Parse(Console.ReadLine() ?? "0.00");
+        Console.Write("Peso em kg[ex: 45]: ");
+        try
+        {
+            Peso = int.Parse(Console.ReadLine() ?? "0");
+        }
+        catch
+        {
+            throw new Exception("Peso inválido");
+        }
     }
     
     public void editarCliente()
@@ -79,9 +98,9 @@ public class Cliente : Pessoa
         Console.Write("Nome: ");
         Nome = Console.ReadLine();
         Console.Write("Altura [ex: X,XX]: ");
-        Altura = float.Parse(Console.ReadLine() ?? "0.00");
+        Altura = int.Parse(Console.ReadLine() ?? "0.00");
         Console.Write("Peso [ex: XX,X]: ");
-        Peso = float.Parse(Console.ReadLine() ?? "0.00");
+        Peso = int.Parse(Console.ReadLine() ?? "0.00");
     }
     public void imprimeCliente()
     {
