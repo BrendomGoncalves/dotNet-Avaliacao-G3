@@ -53,7 +53,9 @@ public class Cliente : Pessoa
             Console.Write("Nascimento [ex: XX/XX/XXXX]: ");
             nascimento = Console.ReadLine();
         }
-        Nascimento = Convert.ToDateTime(nascimento);
+        DateTime dataConvertida;
+        DateTime.TryParseExact(nascimento, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dataConvertida);
+        Nascimento = dataConvertida;
 
         Console.Write("CPF [ex: XXXXXXXXXXXX]: ");
         string? cpf = Console.ReadLine();
