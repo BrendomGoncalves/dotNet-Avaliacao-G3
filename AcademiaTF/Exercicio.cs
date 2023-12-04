@@ -55,7 +55,6 @@ public class Exercicio
             _tempoIntervalo = value;
         }
     }
-
     public void criarExercicio()
     {
         Console.Clear();
@@ -96,7 +95,6 @@ public class Exercicio
         }
         TempoIntervalo = tempoIntervalo;
     }
-
     public void editarExercicio()
     {
 
@@ -118,8 +116,6 @@ public class Exercicio
         string? tempoIntervalo = Console.ReadLine();
         TempoIntervalo = int.Parse(tempoIntervalo);
     }
-
-
     public void imprimeExercicio()
     {
         Console.WriteLine($"{GrupoMuscular}\t\t{Series}\t{Repeticoes}\t\t{TempoIntervalo}");

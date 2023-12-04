@@ -20,70 +20,65 @@ public class Academia
     private List<Treinador> _treinadores;
     private List<Cliente> _clientes;
 
-    //criando treinadores
-    public void criarTreinadores()
-    {
-        Treinador t1 = new Treinador("João", new DateTime(1990, 10, 10), "12345678901", "123456-4/AA");
-        Treinador t2 = new Treinador("Maria", new DateTime(1990, 10, 10), "12345678902", "123456-4/AB");
-        Treinador t3 = new Treinador("José", new DateTime(1990, 10, 10), "12345678903", "123456-4/AC");
-        Treinador t4 = new Treinador("Ana", new DateTime(1990, 10, 10), "12345678904", "123456-4/AE");
-        Treinador t5 = new Treinador("Pedro", new DateTime(1990, 10, 10), "12345678905", "123456-4/AF");
-        _treinadores.Add(t1);
-        _treinadores.Add(t2);
-        _treinadores.Add(t3);
-        _treinadores.Add(t4);
-        _treinadores.Add(t5);
-    }
-
-    //criando clientes
-    public void criarClientes()
-    {
-        Cliente c1 = new Cliente("igor", new DateTime(1990, 10, 10), "12345678901", 185, 80);
-        Cliente c2 = new Cliente("lima", new DateTime(1990, 10, 10), "12345678902", 180, 50);
-        Cliente c3 = new Cliente("rocha", new DateTime(1990, 10, 10), "12345678903", 165, 80);
-        _clientes.Add(c1);
-        _clientes.Add(c2);
-        _clientes.Add(c3);
-    }
-
-    //craindo exercicios
-    public void criarExercicios()
-    {
-        Exercicio e1 = new Exercicio("Pernas", 3, 10, 30);
-        Exercicio e2 = new Exercicio("Braços", 3, 10, 30);
-        Exercicio e3 = new Exercicio("Peito", 3, 10, 30);
-        Exercicio e4 = new Exercicio("Costas", 3, 10, 30);
-        Exercicio e5 = new Exercicio("Ombros", 3, 10, 30);
-        Exercicio e6 = new Exercicio("Abdomen", 3, 10, 30);
-        _exercicios.Add(e1);
-        _exercicios.Add(e2);
-        _exercicios.Add(e3);
-        _exercicios.Add(e4);
-        _exercicios.Add(e5);
-        _exercicios.Add(e6);
-    }
-
+    #region MetodosDeTeste
+        //criando treinadores
+        public void criarTreinadores()
+        {
+            Treinador t1 = new Treinador("João", new DateTime(1990, 10, 10), "12345678901", "123456-4/AA");
+            Treinador t2 = new Treinador("Maria", new DateTime(1990, 10, 10), "12345678902", "123456-4/AB");
+            Treinador t3 = new Treinador("José", new DateTime(1990, 10, 10), "12345678903", "123456-4/AC");
+            Treinador t4 = new Treinador("Ana", new DateTime(1990, 10, 10), "12345678904", "123456-4/AE");
+            Treinador t5 = new Treinador("Pedro", new DateTime(1990, 10, 10), "12345678905", "123456-4/AF");
+            _treinadores.Add(t1);
+            _treinadores.Add(t2);
+            _treinadores.Add(t3);
+            _treinadores.Add(t4);
+            _treinadores.Add(t5);
+        }
+        //criando clientes
+        public void criarClientes()
+        {
+            Cliente c1 = new Cliente("igor", new DateTime(1990, 10, 10), "12345678901", 185, 80);
+            Cliente c2 = new Cliente("lima", new DateTime(1990, 10, 10), "12345678902", 180, 50);
+            Cliente c3 = new Cliente("rocha", new DateTime(1990, 10, 10), "12345678903", 165, 80);
+            _clientes.Add(c1);
+            _clientes.Add(c2);
+            _clientes.Add(c3);
+        }
+        //criando exercicios
+        public void criarExercicios()
+        {
+            Exercicio e1 = new Exercicio("Pernas", 3, 10, 30);
+            Exercicio e2 = new Exercicio("Braços", 3, 10, 30);
+            Exercicio e3 = new Exercicio("Peito", 3, 10, 30);
+            Exercicio e4 = new Exercicio("Costas", 3, 10, 30);
+            Exercicio e5 = new Exercicio("Ombros", 3, 10, 30);
+            Exercicio e6 = new Exercicio("Abdomen", 3, 10, 30);
+            _exercicios.Add(e1);
+            _exercicios.Add(e2);
+            _exercicios.Add(e3);
+            _exercicios.Add(e4);
+            _exercicios.Add(e5);
+            _exercicios.Add(e6);
+        }
+    #endregion
     // Propriedades
     public List<Treino> Treinos
     {
         get => _treinos;
     }
-
     public List<Exercicio> Exercicios
     {
         get => _exercicios;
     }
-
     public List<Treinador> Treinadores
     {
         get => _treinadores;
     }
-
     public List<Cliente> Clientes
     {
         get => _clientes;
     }
-
     // Metodos
     public void menuTreinador()
     {
@@ -146,7 +141,6 @@ public class Academia
             }
         } while (opcao != 0);
     }
-
     private void gerenciaTreinadores()
     {
         int opcao;
@@ -254,7 +248,6 @@ public class Academia
             }
         } while (opcao != 0);
     }
-
     public void menuExercicio()
     {
         int opcao;
@@ -263,6 +256,7 @@ public class Academia
             Console.Clear();
             Console.WriteLine("== Menu Exercícios ==");
             Console.WriteLine("1. Gerenciar Exercícios");
+            Console.WriteLine("2. Top 10 exercícios mais utilizados nos treinos");
             Console.WriteLine("0. Voltar");
             Console.Write("> ");
             try
@@ -279,6 +273,21 @@ public class Academia
                 case 1:
                     gerenciaExercicios();
                     break;
+                case 2:
+                    Console.WriteLine("Top 10 exercícios mais utilizados nos treinos");
+                    var exerciciosMaisUtilizados = Treinos
+                        .SelectMany(treino => treino.Exercicios!)
+                        .GroupBy(exercicio => exercicio.GrupoMuscular)
+                        .OrderByDescending(grupo => grupo.Count())
+                        .Take(10)
+                        .Select(grupo => grupo.Key);
+                    
+                    foreach (var exercicio in exerciciosMaisUtilizados)
+                    {
+                        Console.WriteLine(exercicio);
+                    }
+                    App.pausa();
+                    break;
                 case 0:
                     break;
                 default:
@@ -288,7 +297,6 @@ public class Academia
             }
         } while (opcao != 0);
     }
-
     private void gerenciaExercicios()
     {
         int opcao;
@@ -393,7 +401,6 @@ public class Academia
             }
         } while (opcao != 0);
     }
-
     public void menuCliente()
     {
         int opcao;
@@ -491,7 +498,6 @@ public class Academia
             }
         } while (opcao != 0);
     }
-
     private void gerenciaClientes()
     {
         int opcao;
@@ -597,7 +603,6 @@ public class Academia
             }
         } while (opcao != 0);
     }
-
     public void MesAniversariantes()
     {
         Console.Clear();
@@ -629,7 +634,6 @@ public class Academia
         }
         else Console.WriteLine("Nenhum cliente encontrado.");
     }
-
     public void menuTreino()
     {
         int opcao;
@@ -655,6 +659,7 @@ public class Academia
             {
                 opcao = -1;
             }
+
             switch (opcao)
             {
                 case 1:
@@ -672,6 +677,7 @@ public class Academia
                         App.pausa();
                         break;
                     }
+
                     try
                     {
                         Treino t1 = Treino.cadastrarTreino(treinador);
@@ -684,6 +690,7 @@ public class Academia
                         Console.WriteLine("Cadastro Cancelado! Realize a operacao novamente");
                         App.pausa();
                     }
+
                     break;
                 case 2:
                     if (_treinos.Count == 0)
@@ -692,12 +699,14 @@ public class Academia
                         App.pausa();
                         break;
                     }
+
                     if (_clientes.Count == 0)
                     {
                         Console.WriteLine("Nenhum cliente cadastrado");
                         App.pausa();
                         break;
                     }
+
                     listarClientes();
                     Console.Write("Escolha o ID do cliente: ");
                     Cliente cliente;
@@ -712,12 +721,14 @@ public class Academia
                         App.pausa();
                         break;
                     }
+
                     if (_treinos.Count(t => t.Clientes?.Any(c => c?.Item1 == cliente) ?? false) >= 2)
                     {
                         Console.WriteLine("Cliente já faz parte de 2 treinos");
                         App.pausa();
                         break;
                     }
+
                     listarTreinos();
                     Console.Write("Escolha o ID do treino: ");
                     Treino treinoId;
@@ -732,6 +743,7 @@ public class Academia
                         App.pausa();
                         break;
                     }
+
                     treinoId.adicionarCliente(cliente);
                     break;
                 case 3:
@@ -831,6 +843,7 @@ public class Academia
                         Console.WriteLine("Avaliação inválida");
                         App.pausa();
                     }
+
                     break;
                 case 5:
                     listarTreinos();
@@ -851,6 +864,7 @@ public class Academia
                         App.pausa();
                         break;
                     }
+
                     listarTreinosCliente(cliente2);
                     App.pausa();
                     break;
@@ -870,6 +884,7 @@ public class Academia
                         App.pausa();
                         break;
                     }
+
                     listarTreinosTreinador(treinador2);
                     App.pausa();
 
@@ -878,14 +893,17 @@ public class Academia
                 case 8:
                     Console.Clear();
                     Console.WriteLine("Treinos em ordem crescente pela quantidade de dias até o vencimento");
-                    List<Treino> treinoVencimento = _treinos.OrderBy(t => t.Vencimento - (DateTime.Now - t.DataInicio).Days).ToList();
+                    List<Treino> treinoVencimento =
+                        _treinos.OrderBy(t => t.Vencimento - (DateTime.Now - t.DataInicio).Days).ToList();
                     if (treinoVencimento.Count > 0)
                     {
                         foreach (Treino treino in treinoVencimento)
                         {
                             treino.imprimeTreino();
                         }
-                    } else Console.WriteLine("Nenhum treino encontrado.");
+                    }
+                    else Console.WriteLine("Nenhum treino encontrado.");
+
                     App.pausa();
                     break;
                 case 0:
@@ -897,7 +915,6 @@ public class Academia
             }
         } while (opcao != 0);
     }
-
     public void listarTreinadores()
     {
         Console.Clear();
@@ -911,7 +928,6 @@ public class Academia
 
         Console.WriteLine();
     }
-
     public void listarClientes()
     {
         Console.Clear();
@@ -925,7 +941,6 @@ public class Academia
 
         Console.WriteLine();
     }
-
     public void listarTreinos()
     {
         Console.WriteLine($"ID\tTreinador\tClientes\tExercicios\tTipo\tObjetivo\tDuracao\tDataInicio\tVencimento");
@@ -937,7 +952,6 @@ public class Academia
             i++;
         }
     }
-
     public void listarExercicios()
     {
         Console.Clear();
@@ -951,7 +965,6 @@ public class Academia
 
         Console.WriteLine();
     }
-
     public void listarTreinosCliente(Cliente cliente)
     {
         Console.WriteLine($"Tipo\tObjetivo\tDuracao\tDataInicio\tVencimento\tTreinador");
@@ -968,7 +981,6 @@ public class Academia
 
         Console.WriteLine();
     }
-
     public void listarTreinosTreinador(Treinador treinador)
     {
         Console.WriteLine("Tipo\tObjetivo\tDuracao\tDataInicio\tVencimento\tTreinador");
