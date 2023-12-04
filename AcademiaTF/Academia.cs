@@ -693,6 +693,7 @@ public class Academia
             Console.WriteLine("6. Listar treinos por Cliente");
             Console.WriteLine("7. Listar treinos por Treinador");
             Console.WriteLine("8. Treinos em ordem crescente da data de vencimento");
+            Console.WriteLine("9. Treinos cujo objetivo contenham determinada palavra");
             Console.WriteLine("0. Voltar");
             Console.Write("> ");
             try
@@ -857,6 +858,7 @@ public class Academia
                         break;
                     }
 
+                    Console.Clear();
                     listarTreinosCliente(cliente1);
                     Console.Write("Escolha o ID do treino: ");
                     Treino treino1;
@@ -891,7 +893,7 @@ public class Academia
                         Console.WriteLine("Avaliação inválida");
                         App.pausa();
                     }
-
+                    App.pausa();
                     break;
                 case 5:
                     Console.Clear();
@@ -953,6 +955,21 @@ public class Academia
                     }
                     else Console.WriteLine("Nenhum treino encontrado.");
 
+                    App.pausa();
+                    break;
+                case 9:
+                    Console.Clear();
+                    Console.WriteLine("Treinos cujo objetivo contenham determinada palavra:");
+                    Console.Write("Palavra: ");
+                    string? palavra = Console.ReadLine();
+                    List<Treino> treinoPalavra = Treinos.Where(t => t.Objetivo!.Contains(palavra ?? string.Empty)).ToList();
+                    if (treinoPalavra.Count > 0)
+                    {
+                        foreach (Treino treino in treinoPalavra)
+                        {
+                            treino.imprimeTreino();
+                        }
+                    } else Console.WriteLine("Nenhum treino encontrado.");
                     App.pausa();
                     break;
                 case 0:

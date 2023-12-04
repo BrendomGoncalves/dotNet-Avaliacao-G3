@@ -20,7 +20,9 @@ public class Treino
         _exercicios = new List<Exercicio>();
         _clientes = new List<(Cliente, int)?>();
     }
-    public Treino(string tipo, string objetivo, int duracao, DateTime dataInicio, int vencimento, Treinador? treinador, List<Exercicio> exercicios)
+
+    public Treino(string tipo, string objetivo, int duracao, DateTime dataInicio, int vencimento, Treinador? treinador,
+        List<Exercicio> exercicios)
     {
         Tipo = tipo;
         Objetivo = objetivo;
@@ -105,6 +107,11 @@ public class Treino
         }
     }
 
+    public List<Exercicio>? Exercicios
+    {
+        get => _exercicios;
+    }
+
     public List<(Cliente, int)?>? Clientes
     {
         get => _clientes;
@@ -123,7 +130,6 @@ public class Treino
     }
 
     public void adicionarExercicio(Exercicio exercicio)
-
     {
         if (_exercicios == null)
         {
@@ -214,10 +220,11 @@ public class Treino
 
     public double MediaAvaliacoes()
     {
-        if (_clientes == null || !_clientes.Any())
-            return -1;
-
-        var notas = _clientes.Where(c => c.Item2 != -1).Select(c => c.Item2);
-        return notas.Any() ? notas.Average() : -1;
+        // if (_clientes == null || !_clientes.Any())
+        //     return -1;
+        //
+        // var notas = _clientes.Where(c => c.Item2 != -1).Select(c => c.Item2);
+        // return notas.Any() ? notas.Average() : -1;
+        return -1;
     }
 }
