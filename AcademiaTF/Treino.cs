@@ -203,5 +203,14 @@ public class Treino
 
     }
 
+     public double MediaAvaliacoes()
+    {
+        if (_clientes == null || !_clientes.Any())
+            return -1; 
+
+        var notas = _clientes.Where(c => c.Item2 != -1).Select(c => c.Item2);
+        return notas.Any() ? notas.Average() : -1; 
+    }
+
 
 }
