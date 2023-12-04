@@ -258,6 +258,7 @@ public class Academia
             Console.Clear();
             Console.WriteLine("== Menu Exercícios ==");
             Console.WriteLine("1. Gerenciar Exercícios");
+            Console.WriteLine("2. Top 10 exercícios mais utilizados nos treinos");
             Console.WriteLine("0. Voltar");
             Console.Write("> ");
             try
@@ -274,6 +275,23 @@ public class Academia
                 case 1:
                     gerenciaExercicios();
                     break;
+                case 2:
+                    Console.WriteLine("");
+
+                    var exercicioMaisUtilizado = _treinos.SelectMany(t => t.Exercicios)
+                        .GroupBy(g => g.GrupoMuscular)
+                        .Select(e => new {NomeExercicio = e.Key, Quantidade = e.Count()})
+                        .OrderByDescending(e => e.Quantidade)
+                        .Take(10);
+
+                    foreach (var exercicio in exercicioMaisUtilizado)
+                        {
+                            Console.WriteLine($"Exercício: {Exercicios.NomeExercicio}, Quantidade: {Exercicio.Quantidade}");
+                        }
+                        Console.WriteLine();
+                        App.pausa();
+                        break;
+
                 case 0:
                     break;
                 default:
@@ -631,6 +649,7 @@ public class Academia
             Console.WriteLine("5. Listar todos os Treinos");
             Console.WriteLine("6. Listar treinos por Cliente");
             Console.WriteLine("7. Listar treinos por Treinador");
+            Console.WriteLine("8. Treinos cujo objetivo contenham determinada palavra");
             Console.WriteLine("0. Voltar");
             Console.Write("> ");
             try
@@ -859,7 +878,16 @@ public class Academia
                     App.pausa();
 
                     break;
+                case 8:
 
+                    Console.WriteLine($" Aqui estão os treinos com objetivo contendo a palavra-chave '{palavraChave}'");
+
+                        var treinoPalavraChave = Treinos.Where(t => t.Objetivo.Contains(palavraChave));
+
+                    foreach (var Treino in treinoPalavraChave)
+                        {
+                            Console.WriteLine($"Treino: {Treino.Tipo}, Objetivo: {Treino.Objetivo}");
+                        }
                 case 0:
                     break;
                 default:
