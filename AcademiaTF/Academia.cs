@@ -177,6 +177,8 @@ public class Academia
                     try
                     {
                         novoTreinador.criarTreinador();
+                        if (_treinadores.Any(t => t.Cpf == novoTreinador.Cpf)) throw new Exception("Treinador já cadastrado (CPF repetido)");
+                        if (_treinadores.Any(t => t.Cref == novoTreinador.Cref)) throw new Exception("Treinador já cadastrado (CREF repetido)");
                         _treinadores.Add(novoTreinador);
                         Console.WriteLine("Treinador Cadastrado com sucesso!");
                     }
@@ -514,11 +516,12 @@ public class Academia
                     try
                     {
                         novoCliente.criarCliente();
+                        if (_clientes.Any(c => c.Cpf == novoCliente.Cpf)) throw new Exception("Cliente já cadastrado (CPF repetido)");
                         _clientes.Add(novoCliente);
                         Console.WriteLine("Cliente Cadastrado com sucesso!");
-                    }
-                    catch
+                    }catch(Exception e)
                     {
+                        Console.WriteLine(e.Message);
                         Console.WriteLine("Cadastro Cancelado! Realize a operacao novamente");
                         App.pausa();
                     }
