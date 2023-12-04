@@ -880,14 +880,8 @@ public class Academia
                     break;
                 case 8:
 
-                    Console.WriteLine($" Aqui estão os treinos com objetivo contendo a palavra-chave '{palavraChave}'");
+                //falta ajustar 
 
-                        var treinoPalavraChave = Treinos.Where(t => t.Objetivo.Contains(palavraChave));
-
-                    foreach (var Treino in treinoPalavraChave)
-                        {
-                            Console.WriteLine($"Treino: {Treino.Tipo}, Objetivo: {Treino.Objetivo}");
-                        }
                 case 0:
                     break;
                 default:
@@ -896,6 +890,19 @@ public class Academia
                     break;
             }
         } while (opcao != 0);
+    }
+
+    //treinos cujo objetivo contenham determinada palavra.
+    public void TreinosPorPalavraChave(string palavraChave)
+    {
+        Console.WriteLine($" Aqui estão os treinos com objetivo contendo a palavra-chave '{palavraChave}'");
+
+        var treinoPalavraChave = Treinos.Where(t => t.Objetivo.Contains(palavraChave));
+
+        foreach (var Treino in treinoPalavraChave)
+        {
+            Console.WriteLine($"Treino: {Treino.Tipo}, Objetivo: {Treino.Objetivo}");
+        }
     }
 
     public void listarTreinadores()
