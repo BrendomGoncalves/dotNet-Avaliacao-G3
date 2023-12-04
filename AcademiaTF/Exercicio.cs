@@ -3,7 +3,10 @@ namespace AcademiaTF;
 public class Exercicio
 {
     // Construtores
-    public Exercicio() { }
+    public Exercicio()
+    {
+    }
+
     public Exercicio(string grupoMuscular, int series, int repeticoes, int tempoIntervalo)
     {
         GrupoMuscular = grupoMuscular;
@@ -28,6 +31,7 @@ public class Exercicio
             _grupoMuscular = value;
         }
     }
+
     public int Series
     {
         get => _series;
@@ -37,6 +41,7 @@ public class Exercicio
             _series = value;
         }
     }
+
     public int Repeticoes
     {
         get => _repeticoes;
@@ -46,6 +51,7 @@ public class Exercicio
             _repeticoes = value;
         }
     }
+
     public int TempoIntervalo
     {
         get => _tempoIntervalo;
@@ -55,6 +61,7 @@ public class Exercicio
             _tempoIntervalo = value;
         }
     }
+
     public void criarExercicio()
     {
         Console.Clear();
@@ -93,11 +100,12 @@ public class Exercicio
             Console.Write("Por favor, insira um número válido para o tempo de intervalo: ");
             tempoIntervaloInput = Console.ReadLine();
         }
+
         TempoIntervalo = tempoIntervalo;
     }
+
     public void editarExercicio()
     {
-
         Console.Clear();
         Console.WriteLine("EDITAR EXERCÍCIO:");
 
@@ -116,6 +124,7 @@ public class Exercicio
         string? tempoIntervalo = Console.ReadLine();
         TempoIntervalo = int.Parse(tempoIntervalo);
     }
+
     public void imprimeExercicio()
     {
         Console.WriteLine($"{GrupoMuscular}\t\t{Series}\t{Repeticoes}\t\t{TempoIntervalo}");
