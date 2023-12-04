@@ -766,6 +766,12 @@ public class Academia
                         App.pausa();
                         break;
                     }
+                    if (treino2.tamanhoExercicios() >= 10)
+                    {
+                        Console.WriteLine("Treino já possui 10 exercícios");
+                        App.pausa();
+                        break;
+                    }
                     treino2.adicionarExercicio(exercicio);
                     break;
                 case 4:
