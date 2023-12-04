@@ -146,7 +146,7 @@ public class Treino
 
         Console.Write("Objetivo: ");
         string? objetivo = Console.ReadLine();
-        Console.Write("Duração (em meses): ");
+        Console.Write("Duração (em minutos): ");
         int duracao;
         try
         {
@@ -166,7 +166,7 @@ public class Treino
             throw new Exception("Data inválida!");
         }
         if (dataConvertida < DateTime.Now) throw new Exception("Data de início não pode ser anterior a data atual");
-        Console.Write("Vencimento (em meses): ");
+        Console.Write("Vencimento (em dias): ");
         int vencimento = int.Parse(Console.ReadLine() ?? "0");
         try
         {
