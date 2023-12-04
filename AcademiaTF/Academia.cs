@@ -134,7 +134,20 @@ public class Academia
                     App.pausa();
                     break;
                 case 3:
-                    
+                    Console.Clear();
+                    Console.WriteLine("Relatório de Treinadores em Ordem Decrescente da Média de Notas dos Treinos:");
+                    var mediaTreinadores = _treinadores.Select(treinador =>
+                    {
+                        var treinosDoTreinador = _treinos.Where(treino => treino.Treinador == treinador && treino.MediaAvaliacoes() != -1);
+                        double mediaNotas = treinosDoTreinador.Any() ? treinosDoTreinador.Average(treino => treino.MediaAvaliacoes()) : -1;
+                        return new { Treinador = treinador, MediaNotas = mediaNotas };
+                    }).OrderByDescending(item => item.MediaNotas);
+
+                foreach (var item in mediaTreinadores)
+                {
+                    Console.WriteLine($"Treinador: {item.Treinador.Nome}, Média de Notas: {(item.MediaNotas != -1 ? item.MediaNotas.ToString() : "N/A")}");
+                }
+                break;
                     break;
                 case 0:
                     break;
