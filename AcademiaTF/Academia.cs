@@ -23,11 +23,11 @@ public class Academia
     //criando treinadores
     public void criarTreinadores()
     {
-        Treinador t1 = new Treinador("João", new DateTime(1990, 10, 10), "12345678901", "123456");
-        Treinador t2 = new Treinador("Maria", new DateTime(1990, 10, 10), "12345678902", "123456");
-        Treinador t3 = new Treinador("José", new DateTime(1990, 10, 10), "12345678903", "123456");
-        Treinador t4 = new Treinador("Ana", new DateTime(1990, 10, 10), "12345678904", "123456");
-        Treinador t5 = new Treinador("Pedro", new DateTime(1990, 10, 10), "12345678905", "123456");
+        Treinador t1 = new Treinador("João", new DateTime(1990, 10, 10), "12345678901", "123456-4/AA");
+        Treinador t2 = new Treinador("Maria", new DateTime(1990, 10, 10), "12345678902", "123456-4/AB");
+        Treinador t3 = new Treinador("José", new DateTime(1990, 10, 10), "12345678903", "123456-4/AC");
+        Treinador t4 = new Treinador("Ana", new DateTime(1990, 10, 10), "12345678904", "123456-4/AE");
+        Treinador t5 = new Treinador("Pedro", new DateTime(1990, 10, 10), "12345678905", "123456-4/AF");
         _treinadores.Add(t1);
         _treinadores.Add(t2);
         _treinadores.Add(t3);
@@ -37,9 +37,9 @@ public class Academia
     //criando clientes
     public void criarClientes()
     {
-        Cliente c1 = new Cliente("igor", new DateTime(1990, 10, 10), "12345678901", 18, 80);
-        Cliente c2 = new Cliente("lima", new DateTime(1990, 10, 10), "12345678902", 180, 80);
-        Cliente c3 = new Cliente("rocha", new DateTime(1990, 10, 10), "12345678903", 1, 80);
+        Cliente c1 = new Cliente("igor", new DateTime(1990, 10, 10), "12345678901", 185, 80);
+        Cliente c2 = new Cliente("lima", new DateTime(1990, 10, 10), "12345678902", 180, 50);
+        Cliente c3 = new Cliente("rocha", new DateTime(1990, 10, 10), "12345678903", 165, 80);
         _clientes.Add(c1);
         _clientes.Add(c2);
         _clientes.Add(c3);
