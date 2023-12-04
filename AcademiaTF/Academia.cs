@@ -708,6 +708,13 @@ public class Academia
                         App.pausa();
                         break;
                     }
+                    //verifica se cliente ja não esta em 2 treinos
+                    if(_treinos.Where(t => t.Clientes?.Any(c => c?.Item1 == cliente) ?? false).Count() >= 2)
+                    {
+                        Console.WriteLine("Cliente já faz parte de 2 treinos");
+                        App.pausa();
+                        break;
+                    }
                     listarTreinos();
                     Console.Write("Escolha o ID do treino: ");
                     Treino treino;
