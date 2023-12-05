@@ -93,8 +93,8 @@ public class Academia
             Console.Clear();
             Console.WriteLine("== Menu Treinadores ==");
             Console.WriteLine("1. Gerenciar Treinadores");
-            Console.WriteLine("2. Filtrar por Idade");
-            Console.WriteLine("3. Media de notas de treinos");
+            Console.WriteLine("2. Filtrar por Idade [Relatorio]");
+            Console.WriteLine("3. Media de notas de treinos [Relatorio]");
             Console.WriteLine("0. Voltar");
             Console.Write("> ");
             try
@@ -146,13 +146,20 @@ public class Academia
                             : -1;
                         return new { Treinador = treinador, MediaNotas = mediaNotas };
                     }).OrderByDescending(item => item.MediaNotas);
-
-                    foreach (var item in mediaTreinadores)
+                    
+                    if (mediaTreinadores.Any())
                     {
-                        Console.WriteLine(
-                            $"Treinador: {item.Treinador.Nome}, Média de Notas: {(item.MediaNotas != -1 ? item.MediaNotas.ToString() : "N/A")}");
+                        foreach (var item in mediaTreinadores)
+                        {
+                            Console.WriteLine(
+                                $"Treinador: {item.Treinador.Nome}, Média de Notas: {(item.MediaNotas != -1 ? item.MediaNotas.ToString() : "N/A")}");
+                        }
                     }
-
+                    else
+                    {
+                        Console.WriteLine("Nenhum treino vinculado a treinador.");
+                    }
+                    App.pausa();
                     break;
                 case 0:
                     break;
@@ -419,10 +426,10 @@ public class Academia
             Console.Clear();
             Console.WriteLine("== Menu Clientes ==");
             Console.WriteLine("1. Gerenciar Clientes");
-            Console.WriteLine("2. Filtrar por Idade");
-            Console.WriteLine("3. Filtrar por IMC");
-            Console.WriteLine("4. Listar Clientes em Ordem Alfabetica");
-            Console.WriteLine("5. Listar Clientes por Idade Descrescente");
+            Console.WriteLine("2. Filtrar por Idade [Relatorio]");
+            Console.WriteLine("3. Filtrar por IMC [Relatorio]");
+            Console.WriteLine("4. Listar Clientes em Ordem Alfabetica [Relatorio]");
+            Console.WriteLine("5. Listar Clientes por Idade Descrescente [Relatorio]");
             Console.WriteLine("0. Voltar");
             Console.Write("> ");
             try
@@ -661,8 +668,8 @@ public class Academia
             Console.WriteLine("5. Listar todos os Treinos");
             Console.WriteLine("6. Listar treinos por Cliente");
             Console.WriteLine("7. Listar treinos por Treinador");
-            Console.WriteLine("8. Treinos em ordem crescente da data de vencimento");
-            Console.WriteLine("9. Treinos cujo objetivo contenham determinada palavra");
+            Console.WriteLine("8. Treinos em ordem crescente da data de vencimento [Relatorio]");
+            Console.WriteLine("9. Treinos cujo objetivo contenham determinada palavra [Relatorio]");
             Console.WriteLine("0. Voltar");
             Console.Write("> ");
             try
@@ -737,7 +744,6 @@ public class Academia
                         break;
                     }
 
-                    //verifica se cliente ja não esta em 2 treinos
                     if (Treinos.Where(t => t.Clientes?.Any(c => c?.Item1 == cliente) ?? false).Count() >= 2)
                     {
                         Console.WriteLine("Cliente já faz parte de 2 treinos");
