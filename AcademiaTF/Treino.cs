@@ -105,7 +105,7 @@ public class Treino
     {
         get => _exercicios;
     }
-
+    
     public List<(Cliente, int)?>? Clientes
     {
         get => _clientes;

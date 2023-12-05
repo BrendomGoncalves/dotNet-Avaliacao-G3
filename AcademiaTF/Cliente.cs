@@ -17,6 +17,15 @@ public class Cliente : Pessoa
         PlanoAtivo = planoAtivo;
         Pagamentos = new List<Pagamento>();
     }
+    public Cliente(string nome, DateTime nascimento, string cpf, int altura, int peso)
+    {
+        Nome = nome;
+        Nascimento = nascimento;
+        Cpf = cpf;
+        Altura = altura;
+        Peso = peso;
+        Pagamentos = new List<Pagamento>();
+    }
     
     // Atributos
     private int _altura;

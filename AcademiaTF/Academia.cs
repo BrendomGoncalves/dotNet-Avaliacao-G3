@@ -10,12 +10,12 @@ public class Academia
         Treinadores = new List<Treinador>();
         Clientes = new List<Cliente>();
         Planos = new List<Plano>();
-
+        
         // METODOS DE TESTE
-        // criarTreinadores();
-        // criarClientes();
-        // criarExercicios();
-        // criarTreinos();
+        criarTreinadores();
+        criarClientes();
+        criarExercicios();
+        criarTreinos();
     }
 
     // Propriedades
@@ -29,69 +29,70 @@ public class Academia
     
     public List<Plano> Planos { get; }
 
-    // // METODOS DE TESTE
-    // //criando treinadores para teste
-    // public void criarTreinadores()
-    // {
-    //     Treinador t1 = new Treinador("João", new DateTime(1990, 10, 10), "12345678901", "123456-4/AA");
-    //     Treinador t2 = new Treinador("Maria", new DateTime(1990, 10, 10), "12345678902", "123456-4/AB");
-    //     Treinador t3 = new Treinador("José", new DateTime(1990, 10, 10), "12345678903", "123456-4/AC");
-    //     Treinador t4 = new Treinador("Ana", new DateTime(1990, 10, 10), "12345678904", "123456-4/AE");
-    //     Treinador t5 = new Treinador("Pedro", new DateTime(1990, 10, 10), "12345678905", "123456-4/AF");
-    //     Treinadores.Add(t1);
-    //     Treinadores.Add(t2);
-    //     Treinadores.Add(t3);
-    //     Treinadores.Add(t4);
-    //     Treinadores.Add(t5);
-    // }
-    //
-    // //criando clientes para teste
-    // public void criarClientes()
-    // {
-    //     Cliente c1 = new Cliente("igor", new DateTime(1990, 10, 10), "12345678901", 185, 80);
-    //     Cliente c2 = new Cliente("lima", new DateTime(1990, 10, 10), "12345678902", 180, 50);
-    //     Cliente c3 = new Cliente("rocha", new DateTime(1990, 10, 10), "12345678903", 165, 80);
-    //     Clientes.Add(c1);
-    //     Clientes.Add(c2);
-    //     Clientes.Add(c3);
-    // }
-    //
-    // //craindo exercicios para teste
-    // public void criarExercicios()
-    // {
-    //     Exercicio e1 = new Exercicio("Pernas", 3, 10, 30);
-    //     Exercicio e2 = new Exercicio("Braços", 3, 10, 30);
-    //     Exercicio e3 = new Exercicio("Peito", 3, 10, 30);
-    //     Exercicio e4 = new Exercicio("Costas", 3, 10, 30);
-    //     Exercicio e5 = new Exercicio("Ombros", 3, 10, 30);
-    //     Exercicio e6 = new Exercicio("Abdomen", 3, 10, 30);
-    //     Exercicios.Add(e1);
-    //     Exercicios.Add(e2);
-    //     Exercicios.Add(e3);
-    //     Exercicios.Add(e4);
-    //     Exercicios.Add(e5);
-    //     Exercicios.Add(e6);
-    // }
-    //
-    // // criando treinos para teste
-    // public void criarTreinos()
-    // {
-    //     Treino t1 = new Treino("Treino 1", "Perda peso", 30, new DateTime(2023, 12, 15), 5, Treinadores[0],
-    //         Exercicios.Take(4).ToList());
-    //     Treino t2 = new Treino("Treino 2", "Ganho de massa", 25, new DateTime(2023, 12, 20), 6, Treinadores[1],
-    //         Exercicios.Take(4).ToList());
-    //     Treino t3 = new Treino("Treino 3", "Fortalecimento", 35, new DateTime(2024, 1, 6), 7, Treinadores[2],
-    //         Exercicios.Take(4).ToList());
-    //     Treino t4 = new Treino("Treino 4", "Jogador", 50, new DateTime(2024, 2, 20), 8, Treinadores[3],
-    //         Exercicios.Take(4).ToList());
-    //     Treino t5 = new Treino("Treino 5", "Corrida", 45, new DateTime(2023, 12, 10), 4, Treinadores[4],
-    //         Exercicios.Take(4).ToList());
-    //     Treinos.Add(t1);
-    //     Treinos.Add(t2);
-    //     Treinos.Add(t3);
-    //     Treinos.Add(t4);
-    //     Treinos.Add(t5);
-    // }
+    // METODOS DE TESTE
+    //criando treinadores para teste
+    public void criarTreinadores()
+    {
+        Treinador t1 = new Treinador("João", new DateTime(1990, 10, 10), "12345678901", "123456-4/AA");
+        Treinador t2 = new Treinador("Maria", new DateTime(1990, 10, 10), "12345678902", "123456-4/AB");
+        Treinador t3 = new Treinador("José", new DateTime(1990, 10, 10), "12345678903", "123456-4/AC");
+        Treinador t4 = new Treinador("Ana", new DateTime(1990, 10, 10), "12345678904", "123456-4/AE");
+        Treinador t5 = new Treinador("Pedro", new DateTime(1990, 10, 10), "12345678905", "123456-4/AF");
+        Treinadores.Add(t1);
+        Treinadores.Add(t2);
+        Treinadores.Add(t3);
+        Treinadores.Add(t4);
+        Treinadores.Add(t5);
+    }
+    
+    //criando clientes para teste
+    public void criarClientes()
+    {
+        Cliente c1 = new Cliente("igor", new DateTime(1990, 10, 10), "12345678901", 185, 80);
+        Cliente c2 = new Cliente("lima", new DateTime(1990, 10, 10), "12345678902", 180, 50);
+        Cliente c3 = new Cliente("rocha", new DateTime(1990, 10, 10), "12345678903", 165, 80);
+        Clientes.Add(c1);
+        Clientes.Add(c2);
+        Clientes.Add(c3);
+    }
+    
+    //craindo exercicios para teste
+    public void criarExercicios()
+    {
+        Exercicio e1 = new Exercicio("Pernas", 3, 10, 30);
+        Exercicio e2 = new Exercicio("Braços", 3, 10, 30);
+        Exercicio e3 = new Exercicio("Peito", 3, 10, 30);
+        Exercicio e4 = new Exercicio("Costas", 3, 10, 30);
+        Exercicio e5 = new Exercicio("Ombros", 3, 10, 30);
+        Exercicio e6 = new Exercicio("Abdomen", 3, 10, 30);
+        Exercicios.Add(e1);
+        Exercicios.Add(e2);
+        Exercicios.Add(e3);
+        Exercicios.Add(e4);
+        Exercicios.Add(e5);
+        Exercicios.Add(e6);
+    }
+    
+    
+    // criando treinos para teste
+    public void criarTreinos()
+    {
+        Treino t1 = new Treino("Treino 1", "Perda peso", 30, new DateTime(2023, 12, 15), 5, Treinadores[0],
+            Exercicios.Take(4).ToList());
+        Treino t2 = new Treino("Treino 2", "Ganho de massa", 25, new DateTime(2023, 12, 20), 6, Treinadores[1],
+            Exercicios.Take(4).ToList());
+        Treino t3 = new Treino("Treino 3", "Fortalecimento", 35, new DateTime(2024, 1, 6), 7, Treinadores[2],
+            Exercicios.Take(4).ToList());
+        Treino t4 = new Treino("Treino 4", "Jogador", 50, new DateTime(2024, 2, 20), 8, Treinadores[3],
+            Exercicios.Take(4).ToList());
+        Treino t5 = new Treino("Treino 5", "Corrida", 45, new DateTime(2023, 12, 10), 4, Treinadores[4],
+            Exercicios.Take(4).ToList());
+        Treinos.Add(t1);
+        Treinos.Add(t2);
+        Treinos.Add(t3);
+        Treinos.Add(t4);
+        Treinos.Add(t5);
+    }
 
     // Metodos
     
@@ -177,7 +178,140 @@ public class Academia
             }
         } while (opcao != 0);
     }
+    public void menuPlano(){
+        int opcao;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine("== Menu Planos ==");
+            Console.WriteLine("1. Gerenciar Planos");
+            Console.WriteLine("0. Voltar");
+            Console.Write("> ");
+            try
+            {
+                opcao = int.Parse(Console.ReadLine() ?? "0");
+            }
+            catch
+            {
+                opcao = -1;
+            }
 
+            switch (opcao)
+            {
+                case 1:
+                    gerenciaPlanos();
+                    break;
+                case 0:
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida!");
+                    App.pausa();
+                    break;
+            }
+        } while (opcao != 0);
+    }
+    private void gerenciaPlanos(){
+        int opcao;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine("== Gerenciar Planos ==");
+            Console.WriteLine("1. Cadastrar Plano");
+            Console.WriteLine("2. Listar Planos");
+            Console.WriteLine("3. Editar Plano");
+            Console.WriteLine("4. Remover Plano");
+            Console.WriteLine("0. Voltar");
+            Console.Write("> ");
+            try
+            {
+                opcao = int.Parse(Console.ReadLine() ?? "0");
+            }
+            catch
+            {
+                opcao = -1;
+            }
+
+            string? titulo;
+            switch (opcao)
+            {
+                case 1:
+                    Console.Clear();
+                    Plano novoPlano = new Plano();
+                    try
+                    {
+                        novoPlano.criarPlano();
+                        if (Planos.Any(c => c.Titulo == novoPlano.Titulo))
+                            throw new Exception("Plano já cadastrado com esse título");
+                        Planos.Add(novoPlano);
+                        Console.WriteLine("Plano Cadastrado com sucesso!");
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                        Console.WriteLine("Cadastro Cancelado! Realize a operação novamente");
+                        App.pausa();
+                    }
+                    App.pausa();
+                    break;
+                case 2:
+                    Console.Clear();
+                    Console.WriteLine("Lista de Planos:");
+                    Console.WriteLine("NOME DO PLANO\t\tVALOR");
+                    foreach (Plano plano in Planos)
+                    {
+                        plano.imprimePlano();
+                    }
+                    Console.WriteLine();
+                    App.pausa();
+                    break;
+                case 3:
+                    Console.Clear();
+                    Console.WriteLine("EDITAR PLANO:");
+                    Console.Write("Digite o título do plano: ");
+                    titulo = Console.ReadLine();
+                    try
+                    {
+                        Plano ePlano = Planos.Find(cliente => cliente.Titulo == titulo) ??
+                                           throw new Exception("Plano não encontrado");
+                        ePlano.editarPlano();
+                        Console.WriteLine("Plano editado com sucesso!");
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Edicao Cancelada! Realize a operação novamente");
+                        App.pausa();
+                    }
+                    App.pausa();
+                    break;
+                case 4:
+                    Console.Clear();
+                    Console.WriteLine("REMOVER PLANO:");
+                    Console.WriteLine("Digite o título do plano: ");
+                    titulo = Console.ReadLine();
+                    try
+                    {
+                        Plano rPlano = Planos.Find(plano => plano.Titulo == titulo) ??
+                                           throw new Exception("Plano não encontrado");
+                        Planos.Remove(rPlano);
+                        Console.WriteLine("Plano removido com sucesso!");
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Remoção Cancelada! Realize a operação novamente");
+                        App.pausa();
+                    }
+
+                    App.pausa();
+                    break;
+                case 0:
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida!");
+                    break;
+            }
+        } while (opcao != 0);
+    }
+        
     private void gerenciaTreinadores()
     {
         int opcao;
@@ -455,6 +589,7 @@ public class Academia
             Console.WriteLine("3. Filtrar por IMC [Relatorio]");
             Console.WriteLine("4. Listar Clientes em Ordem Alfabetica [Relatorio]");
             Console.WriteLine("5. Listar Clientes por Idade Descrescente [Relatorio]");
+            Console.WriteLine("6. Realizar Pagamento");
             Console.WriteLine("0. Voltar");
             Console.Write("> ");
             try
@@ -531,6 +666,53 @@ public class Academia
                     foreach (Cliente cliente in clientesOrdenados2) cliente.imprimeCliente();
                     App.pausa();
                     break;
+                case 6:
+                    try
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Realizar Pagamento");
+                        Console.WriteLine("Selecione o cliente: ");
+                        listarClientes();
+                        Console.Write("Escolha o id do cliente: ");
+                        int id = int.Parse(Console.ReadLine() ?? "0");
+
+                        Console.WriteLine("Opção de pagamento: ");
+                        Console.WriteLine("1. Dinheiro");
+                        Console.WriteLine("2. Cartão");
+                        Console.WriteLine("0. Cancelar");
+                        Console.Write("> ");
+                        int opcao2 = int.Parse(Console.ReadLine() ?? "0");
+
+                        double valorPagamento = Clientes[id].PlanoAtivo.ValorPorMes;
+
+                        switch (opcao2)
+                        {
+                            case 1:
+                                PagamentoDinheiro novoPD = new PagamentoDinheiro();
+                                novoPD.RealizarPagamento(valorPagamento);
+                                Clientes[id].Pagamentos.Add(novoPD);
+                                Console.WriteLine("Pagamento realizado com sucesso!");
+                                break;
+                            case 2:
+                                PagamentoCartao novoPC = new PagamentoCartao();
+                                novoPC.RealizarPagamento(valorPagamento);
+                                Clientes[id].Pagamentos.Add(novoPC);
+                                Console.WriteLine("Pagamento realizado com sucesso!");
+                                break;
+                            case 0:
+                                break;
+                            default:
+                                Console.WriteLine("Opção inválida!");
+                                App.pausa();
+                                break;
+                        }
+                        Console.WriteLine("Pagamento realizado com sucesso!");
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Pagamento Cancelado");
+                    }
+                    break;
                 case 0:
                     break;
                 default:
@@ -575,7 +757,14 @@ public class Academia
                         if (Clientes.Any(c => c.Cpf == novoCliente.Cpf))
                             throw new Exception("Cliente já cadastrado (CPF repetido)");
                         
+                        listarPlanos();
+                        Console.Write("Escolha um ID do Plano: ");
+                        int idPlano = int.Parse(Console.ReadLine() ?? "-1");
+
+                        if (idPlano == -1) throw new Exception("Plano inválido!");
+                        novoCliente.PlanoAtivo = Planos[idPlano];
                         
+                        Console.WriteLine($"Adicionando o cliente ao plano: {novoCliente.PlanoAtivo.Titulo}");
                         
                         Clientes.Add(novoCliente);
                         Console.WriteLine("Cliente Cadastrado com sucesso!");
@@ -1050,15 +1239,6 @@ public class Academia
         Console.WriteLine();
     }
 
-    public void listarPlanos()
-    {
-        for (int i = 0; i < Planos.Count; i++)
-        {
-            Console.Write($"({i})\t");
-            Planos[i].imprimePlano();
-        }
-    }
-
     public void listarTreinosCliente(Cliente cliente)
     {
         Console.WriteLine($"ID\tTipo\tObjetivo\tDuracao\tDataInicio\tVencimento\tTreinador");
@@ -1105,6 +1285,15 @@ public class Academia
         else
         {
             return 0;
+        }
+    }
+
+    public void listarPlanos()
+    {
+        for (int i = 0; i < Planos.Count; i++)
+        {
+            Console.Write($"({i})\t");
+            Planos[i].imprimePlano();
         }
     }
 }
