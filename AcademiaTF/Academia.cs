@@ -5,94 +5,84 @@ public class Academia
     // Construtores
     public Academia()
     {
-        Treinos = new List<Treino>();
-        Exercicios = new List<Exercicio>();
-        Treinadores = new List<Treinador>();
-        Clientes = new List<Cliente>();
-
-        #region MetodosParaTeste
-
-        criarTreinadores();
-        criarClientes();
-        criarExercicios();
-        criarTreinos();
-
-        #endregion
+        _treinos = new List<Treino>();
+        _exercicios = new List<Exercicio>();
+        _treinadores = new List<Treinador>();
+        _clientes = new List<Cliente>();
+        // criarTreinadores();
+        // criarClientes();
+        // criarExercicios();
     }
 
-    #region MetodosParaTeste
+    // Atributos
+    private List<Treino> _treinos;
+    private List<Exercicio> _exercicios;
+    private List<Treinador> _treinadores;
+    private List<Cliente> _clientes;
 
     //criando treinadores
     public void criarTreinadores()
     {
-        Treinador t1 = new Treinador("João", new DateTime(1993, 10, 20), "12345678901", "123456-4/BA");
-        Treinador t2 = new Treinador("Maria", new DateTime(1995, 8, 25), "12345678902", "123456-4/RJ");
-        Treinador t3 = new Treinador("José", new DateTime(1991, 5, 11), "12345678903", "123456-4/AC");
-        Treinador t4 = new Treinador("Ana", new DateTime(1989, 1, 7), "12345678904", "123456-4/PB");
-        Treinador t5 = new Treinador("Pedro", new DateTime(1985, 2, 1), "12345678905", "123456-4/SP");
-        Treinadores.Add(t1);
-        Treinadores.Add(t2);
-        Treinadores.Add(t3);
-        Treinadores.Add(t4);
-        Treinadores.Add(t5);
+        Treinador t1 = new Treinador("João", new DateTime(1990, 10, 10), "12345678901", "123456-4/AA");
+        Treinador t2 = new Treinador("Maria", new DateTime(1990, 10, 10), "12345678902", "123456-4/AB");
+        Treinador t3 = new Treinador("José", new DateTime(1990, 10, 10), "12345678903", "123456-4/AC");
+        Treinador t4 = new Treinador("Ana", new DateTime(1990, 10, 10), "12345678904", "123456-4/AE");
+        Treinador t5 = new Treinador("Pedro", new DateTime(1990, 10, 10), "12345678905", "123456-4/AF");
+        _treinadores.Add(t1);
+        _treinadores.Add(t2);
+        _treinadores.Add(t3);
+        _treinadores.Add(t4);
+        _treinadores.Add(t5);
     }
 
     //criando clientes
     public void criarClientes()
     {
-        Cliente c1 = new Cliente("Igor", new DateTime(2000, 12, 11), "98765432101", 185, 80);
-        Cliente c2 = new Cliente("Lima", new DateTime(2001, 9, 5), "98765432102", 178, 65);
-        Cliente c3 = new Cliente("Rocha", new DateTime(1997, 3, 31), "98765432103", 165, 80);
-        Clientes.Add(c1);
-        Clientes.Add(c2);
-        Clientes.Add(c3);
+        Cliente c1 = new Cliente("igor", new DateTime(1990, 10, 10), "12345678901", 185, 80);
+        Cliente c2 = new Cliente("lima", new DateTime(1990, 10, 10), "12345678902", 180, 50);
+        Cliente c3 = new Cliente("rocha", new DateTime(1990, 10, 10), "12345678903", 165, 80);
+        _clientes.Add(c1);
+        _clientes.Add(c2);
+        _clientes.Add(c3);
     }
 
-    //criando exercicios
+    //craindo exercicios
     public void criarExercicios()
     {
-        Exercicio e1 = new Exercicio("Pernas", 3, 20, 20);
-        Exercicio e2 = new Exercicio("Braços", 2, 10, 35);
-        Exercicio e3 = new Exercicio("Peito", 6, 15, 15);
-        Exercicio e4 = new Exercicio("Costas", 4, 8, 40);
-        Exercicio e5 = new Exercicio("Ombros", 2, 10, 12);
-        Exercicio e6 = new Exercicio("Abdomen", 1, 5, 10);
-        Exercicios.Add(e1);
-        Exercicios.Add(e2);
-        Exercicios.Add(e3);
-        Exercicios.Add(e4);
-        Exercicios.Add(e5);
-        Exercicios.Add(e6);
+        Exercicio e1 = new Exercicio("Pernas", 3, 10, 30);
+        Exercicio e2 = new Exercicio("Braços", 3, 10, 30);
+        Exercicio e3 = new Exercicio("Peito", 3, 10, 30);
+        Exercicio e4 = new Exercicio("Costas", 3, 10, 30);
+        Exercicio e5 = new Exercicio("Ombros", 3, 10, 30);
+        Exercicio e6 = new Exercicio("Abdomen", 3, 10, 30);
+        _exercicios.Add(e1);
+        _exercicios.Add(e2);
+        _exercicios.Add(e3);
+        _exercicios.Add(e4);
+        _exercicios.Add(e5);
+        _exercicios.Add(e6);
     }
-
-    public void criarTreinos()
-    {
-        Treino t1 = new Treino("Treino 1", "Perda peso", 30, new DateTime(2023, 12, 15), 5, Treinadores[0],
-            Exercicios.Take(4).ToList());
-        Treino t2 = new Treino("Treino 2", "Ganho de massa", 25, new DateTime(2023, 12, 20), 6, Treinadores[1],
-            Exercicios.Take(4).ToList());
-        Treino t3 = new Treino("Treino 3", "Fortalecimento", 35, new DateTime(2024, 1, 6), 7, Treinadores[2],
-            Exercicios.Take(4).ToList());
-        Treino t4 = new Treino("Treino 4", "Jogador", 50, new DateTime(2024, 2, 20), 8, Treinadores[3],
-            Exercicios.Take(4).ToList());
-        Treino t5 = new Treino("Treino 5", "Corrida", 45, new DateTime(2023, 12, 10), 4, Treinadores[4],
-            Exercicios.Take(4).ToList());
-        Treinos.Add(t1);
-        Treinos.Add(t2);
-        Treinos.Add(t3);
-        Treinos.Add(t4);
-        Treinos.Add(t5);
-    }
-    #endregion
 
     // Propriedades
-    public List<Treino> Treinos { get; }
+    public List<Treino> Treinos
+    {
+        get => _treinos;
+    }
 
-    public List<Exercicio> Exercicios { get; }
+    public List<Exercicio> Exercicios
+    {
+        get => _exercicios;
+    }
 
-    public List<Treinador> Treinadores { get; }
+    public List<Treinador> Treinadores
+    {
+        get => _treinadores;
+    }
 
-    public List<Cliente> Clientes { get; }
+    public List<Cliente> Clientes
+    {
+        get => _clientes;
+    }
 
     // Metodos
     public void menuTreinador()
@@ -130,7 +120,7 @@ public class Academia
                     int idadeMaxima = int.Parse(Console.ReadLine() ?? "0");
                     Console.Clear();
                     Console.WriteLine("Treinadores encontrado:");
-                    List<Treinador> treinadoresFiltrados = Treinadores.Where(treinador =>
+                    List<Treinador> treinadoresFiltrados = _treinadores.Where(treinador =>
                         Pessoa.calculaIdade(treinador.Nascimento) >= idadeMinima &&
                         Pessoa.calculaIdade(treinador.Nascimento) <= idadeMaxima).ToList();
                     if (treinadoresFiltrados.Count > 0)
@@ -147,29 +137,22 @@ public class Academia
                 case 3:
                     Console.Clear();
                     Console.WriteLine("Relatório de Treinadores em Ordem Decrescente da Média de Notas dos Treinos:");
-                    try
+                    var mediaTreinadores = _treinadores.Select(treinador =>
                     {
-                        var mediaTreinadores = Treinadores.Select(treinador =>
-                        {
-                            var treinosDoTreinador = Treinos.Where(treino =>
-                                treino.Treinador == treinador && treino.MediaAvaliacoes() != -1);
-                            double mediaNotas = treinosDoTreinador.Any()
-                                ? treinosDoTreinador.Average(treino => treino.MediaAvaliacoes())
-                                : -1;
-                            return new { Treinador = treinador, MediaNotas = mediaNotas };
-                        }).OrderByDescending(item => item.MediaNotas);
+                        var treinosDoTreinador = _treinos.Where(treino =>
+                            treino.Treinador == treinador && treino.MediaAvaliacoes() != -1);
+                        double mediaNotas = treinosDoTreinador.Any()
+                            ? treinosDoTreinador.Average(treino => treino.MediaAvaliacoes())
+                            : -1;
+                        return new { Treinador = treinador, MediaNotas = mediaNotas };
+                    }).OrderByDescending(item => item.MediaNotas);
 
-                        foreach (var item in mediaTreinadores)
-                        {
-                            Console.WriteLine(
-                                $"Treinador: {item.Treinador.Nome}, Média de Notas: {(item.MediaNotas != -1 ? item.MediaNotas.ToString() : "N/A")}");
-                        }
-                    }
-                    catch
+                    foreach (var item in mediaTreinadores)
                     {
-                        Console.WriteLine("Nenhum treino vinculado ao treinador");
+                        Console.WriteLine(
+                            $"Treinador: {item.Treinador.Nome}, Média de Notas: {(item.MediaNotas != -1 ? item.MediaNotas.ToString() : "N/A")}");
                     }
-                    App.pausa();
+
                     break;
                 case 0:
                     break;
@@ -212,11 +195,11 @@ public class Academia
                     try
                     {
                         novoTreinador.criarTreinador();
-                        if (Treinadores.Any(t => t.Cpf == novoTreinador.Cpf))
+                        if (_treinadores.Any(t => t.Cpf == novoTreinador.Cpf))
                             throw new Exception("Treinador já cadastrado (CPF repetido)");
-                        if (Treinadores.Any(t => t.Cref == novoTreinador.Cref))
+                        if (_treinadores.Any(t => t.Cref == novoTreinador.Cref))
                             throw new Exception("Treinador já cadastrado (CREF repetido)");
-                        Treinadores.Add(novoTreinador);
+                        _treinadores.Add(novoTreinador);
                         Console.WriteLine("Treinador Cadastrado com sucesso!");
                     }
                     catch (Exception e)
@@ -232,7 +215,7 @@ public class Academia
                     Console.Clear();
                     Console.WriteLine("Lista de Treinadores:");
                     Console.WriteLine("CPF\t\tCREF\t\tDATA DE NASCIMENTO\tNOME");
-                    foreach (Treinador treinador in Treinadores)
+                    foreach (Treinador treinador in _treinadores)
                     {
                         treinador.imprimeTreinador();
                     }
@@ -247,7 +230,7 @@ public class Academia
                     cpf = Console.ReadLine();
                     try
                     {
-                        Treinador eTreinador = Treinadores.Find(treinador => treinador.Cpf == cpf) ??
+                        Treinador eTreinador = _treinadores.Find(treinador => treinador.Cpf == cpf) ??
                                                throw new Exception("Treinador não encontrado");
                         eTreinador.editarTreinador();
                         Console.WriteLine("Nome do treinador editado com sucesso!");
@@ -267,9 +250,9 @@ public class Academia
                     cpf = Console.ReadLine();
                     try
                     {
-                        Treinador rTreinador = Treinadores.Find(treinador => treinador.Cpf == cpf) ??
+                        Treinador rTreinador = _treinadores.Find(treinador => treinador.Cpf == cpf) ??
                                                throw new Exception("Treinador não encontrado");
-                        Treinadores.Remove(rTreinador);
+                        _treinadores.Remove(rTreinador);
                         Console.WriteLine("Treinador removido com sucesso!");
                     }
                     catch
@@ -297,7 +280,6 @@ public class Academia
             Console.Clear();
             Console.WriteLine("== Menu Exercícios ==");
             Console.WriteLine("1. Gerenciar Exercícios");
-            Console.WriteLine("2. Top 10 exercícios mais utilizados nos treinos");
             Console.WriteLine("0. Voltar");
             Console.Write("> ");
             try
@@ -313,23 +295,6 @@ public class Academia
             {
                 case 1:
                     gerenciaExercicios();
-                    break;
-                case 2:
-                    Console.Clear();
-                    Console.WriteLine("Top 10 exercícios mais utilizados nos treinos");
-                    if (Treinos.Count > 0)
-                    {
-                        var exerciciosMaisUtilizados = Treinos
-                            .SelectMany(treino => treino.Exercicios!)
-                            .GroupBy(exercicio => exercicio.GrupoMuscular)
-                            .OrderByDescending(grupo => grupo.Count())
-                            .Take(10)
-                            .Select(grupo => grupo.Key);
-                        foreach (var exercicio in exerciciosMaisUtilizados) Console.WriteLine(exercicio);
-                    }
-                    else Console.WriteLine("Nenhum treino criado");
-
-                    App.pausa();
                     break;
                 case 0:
                     break;
@@ -372,7 +337,7 @@ public class Academia
                     try
                     {
                         novoExercicio.criarExercicio();
-                        Exercicios.Add(novoExercicio);
+                        _exercicios.Add(novoExercicio);
                         Console.WriteLine("Exercício cadastrado com sucesso!");
                     }
                     catch
@@ -387,7 +352,7 @@ public class Academia
                     Console.Clear();
                     Console.WriteLine("Lista de Exercício:");
                     Console.WriteLine("GRUPO MUSCULAR\tSÉRIES\tREPETIÇÕES\tINTERVALO DE DESCANSO (s)");
-                    foreach (Exercicio exercicio in Exercicios)
+                    foreach (Exercicio exercicio in _exercicios)
                     {
                         exercicio.imprimeExercicio();
                     }
@@ -403,7 +368,7 @@ public class Academia
                     try
                     {
                         Exercicio uExercicio =
-                            Exercicios.Find(exercicio => exercicio.GrupoMuscular == grupoMuscular) ??
+                            _exercicios.Find(exercicio => exercicio.GrupoMuscular == grupoMuscular) ??
                             throw new Exception("Exercício não encontrado");
                         uExercicio.editarExercicio();
                         Console.WriteLine("Exercício editado com sucesso!");
@@ -424,9 +389,9 @@ public class Academia
                     try
                     {
                         Exercicio rExercicio =
-                            Exercicios.Find(exercicio => exercicio.GrupoMuscular == grupoMuscular) ??
+                            _exercicios.Find(exercicio => exercicio.GrupoMuscular == grupoMuscular) ??
                             throw new Exception("Treinador não encontrado");
-                        Exercicios.Remove(rExercicio);
+                        _exercicios.Remove(rExercicio);
                         Console.WriteLine("Exercício removido com sucesso!");
                     }
                     catch
@@ -483,7 +448,7 @@ public class Academia
                     int idadeMaxima = int.Parse(Console.ReadLine() ?? "0");
                     Console.Clear();
                     Console.WriteLine("Clientes encontrado:");
-                    List<Cliente> clientesFiltrados = Clientes.Where(cliente =>
+                    List<Cliente> clientesFiltrados = _clientes.Where(cliente =>
                         Pessoa.calculaIdade(cliente.Nascimento) >= idadeMinima &&
                         Pessoa.calculaIdade(cliente.Nascimento) <= idadeMaxima).ToList();
                     if (clientesFiltrados.Count > 0)
@@ -505,7 +470,7 @@ public class Academia
 
                     Console.Clear();
                     Console.WriteLine("Clientes encontrado:");
-                    List<Cliente> clientesFiltrados2 = Clientes
+                    List<Cliente> clientesFiltrados2 = _clientes
                         .Where(cliente => cliente.Peso / Math.Pow(cliente.Altura, 2) > imcBase)
                         .OrderBy(cliente => cliente.Peso / Math.Pow(cliente.Altura, 2)).ToList();
 
@@ -523,14 +488,14 @@ public class Academia
                 case 4:
                     Console.Clear();
                     Console.WriteLine("Clientes em Ordem Alfabetica:");
-                    List<Cliente> clientesOrdenados = Clientes.OrderBy(c => c.Nome).ToList();
+                    List<Cliente> clientesOrdenados = _clientes.OrderBy(c => c.Nome).ToList();
                     foreach (Cliente cliente in clientesOrdenados) cliente.imprimeCliente();
                     App.pausa();
                     break;
                 case 5:
                     Console.Clear();
                     Console.WriteLine("Clientes por Idade Descrescente:");
-                    List<Cliente> clientesOrdenados2 = Clientes.OrderBy(c => c.Nascimento).ToList();
+                    List<Cliente> clientesOrdenados2 = _clientes.OrderBy(c => c.Nascimento).ToList();
                     foreach (Cliente cliente in clientesOrdenados2) cliente.imprimeCliente();
                     App.pausa();
                     break;
@@ -575,9 +540,9 @@ public class Academia
                     try
                     {
                         novoCliente.criarCliente();
-                        if (Clientes.Any(c => c.Cpf == novoCliente.Cpf))
+                        if (_clientes.Any(c => c.Cpf == novoCliente.Cpf))
                             throw new Exception("Cliente já cadastrado (CPF repetido)");
-                        Clientes.Add(novoCliente);
+                        _clientes.Add(novoCliente);
                         Console.WriteLine("Cliente Cadastrado com sucesso!");
                     }
                     catch (Exception e)
@@ -593,7 +558,7 @@ public class Academia
                     Console.Clear();
                     Console.WriteLine("Lista de Clientes:");
                     Console.WriteLine("CPF\t\tDATA DE NASCIMENTO\tALTURA\tPESO\tNOME");
-                    foreach (Cliente cliente in Clientes)
+                    foreach (Cliente cliente in _clientes)
                     {
                         cliente.imprimeCliente();
                     }
@@ -608,7 +573,7 @@ public class Academia
                     cpf = Console.ReadLine();
                     try
                     {
-                        Cliente eCliente = Clientes.Find(cliente => cliente.Cpf == cpf) ??
+                        Cliente eCliente = _clientes.Find(cliente => cliente.Cpf == cpf) ??
                                            throw new Exception("Cliente não encontrado");
                         eCliente.editarCliente();
                         Console.WriteLine("Cliente editado com sucesso!");
@@ -628,9 +593,9 @@ public class Academia
                     cpf = Console.ReadLine();
                     try
                     {
-                        Cliente rCliente = Clientes.Find(cliente => cliente.Cpf == cpf) ??
+                        Cliente rCliente = _clientes.Find(cliente => cliente.Cpf == cpf) ??
                                            throw new Exception("Cliente não encontrado");
-                        Clientes.Remove(rCliente);
+                        _clientes.Remove(rCliente);
                         Console.WriteLine("Cliente removido com sucesso!");
                     }
                     catch
@@ -657,9 +622,9 @@ public class Academia
         Console.Write("Digite o mes que deseja consultar (entre 1-12): ");
         int mesAniversario = int.Parse(Console.ReadLine() ?? "0");
 
-        List<Treinador> treinadoresAniversariantes = Treinadores.Where(treinador =>
+        List<Treinador> treinadoresAniversariantes = _treinadores.Where(treinador =>
             treinador.Nascimento.Month == mesAniversario).ToList();
-        List<Cliente> clientesAniversariantes = Clientes.Where(cliente =>
+        List<Cliente> clientesAniversariantes = _clientes.Where(cliente =>
             cliente.Nascimento.Month == mesAniversario).ToList();
         Console.WriteLine("Treinadores aniversariantes:");
         if (treinadoresAniversariantes.Count > 0)
@@ -680,8 +645,6 @@ public class Academia
             }
         }
         else Console.WriteLine("Nenhum cliente encontrado.");
-
-        App.pausa();
     }
 
     public void menuTreino()
@@ -714,14 +677,13 @@ public class Academia
             switch (opcao)
             {
                 case 1:
-                    Console.Clear();
                     listarTreinadores();
                     Console.Write("Escolha o ID do treinador responsável: ");
                     Treinador treinador;
                     try
                     {
                         int indexTreinador = int.Parse(Console.ReadLine() ?? "-1");
-                        treinador = Treinadores[indexTreinador];
+                        treinador = _treinadores[indexTreinador];
                     }
                     catch
                     {
@@ -733,7 +695,7 @@ public class Academia
                     try
                     {
                         Treino t1 = Treino.cadastrarTreino(treinador);
-                        Treinos.Add(t1);
+                        _treinos.Add(t1);
                         Console.WriteLine("Treino cadastrado com sucesso!");
                     }
                     catch (Exception e)
@@ -743,31 +705,30 @@ public class Academia
                         App.pausa();
                     }
 
+
                     break;
                 case 2:
-                    Console.Clear();
-                    if (Treinos.Count == 0)
+                    if (_treinos.Count == 0)
                     {
                         Console.WriteLine("Nenhum treino cadastrado");
                         App.pausa();
                         break;
                     }
 
-                    if (Clientes.Count == 0)
+                    if (_clientes.Count == 0)
                     {
                         Console.WriteLine("Nenhum cliente cadastrado");
                         App.pausa();
                         break;
                     }
 
-                    Console.Clear();
                     listarClientes();
                     Console.Write("Escolha o ID do cliente: ");
                     Cliente cliente;
                     try
                     {
                         int indexCliente = int.Parse(Console.ReadLine() ?? "-1");
-                        cliente = Clientes[indexCliente];
+                        cliente = _clientes[indexCliente];
                     }
                     catch
                     {
@@ -776,21 +737,21 @@ public class Academia
                         break;
                     }
 
-                    if (Treinos.Count(t => t.Clientes?.Any(c => c?.Item1 == cliente) ?? false) >= 2)
+                    //verifica se cliente ja não esta em 2 treinos
+                    if (Treinos.Where(t => t.Clientes?.Any(c => c?.Item1 == cliente) ?? false).Count() >= 2)
                     {
                         Console.WriteLine("Cliente já faz parte de 2 treinos");
                         App.pausa();
                         break;
                     }
 
-                    Console.Clear();
                     listarTreinos();
                     Console.Write("Escolha o ID do treino: ");
                     Treino treinoId;
                     try
                     {
                         int indexTreino = int.Parse(Console.ReadLine() ?? "-1");
-                        treinoId = Treinos[indexTreino];
+                        treinoId = _treinos[indexTreino];
                     }
                     catch
                     {
@@ -800,17 +761,18 @@ public class Academia
                     }
 
                     treinoId.adicionarCliente(cliente);
-                    App.pausa();
+
+
                     break;
+
                 case 3:
-                    Console.Clear();
                     listarExercicios();
                     Console.Write("Escolha o ID do exercicio: ");
                     Exercicio exercicio;
                     try
                     {
                         int indexExercicio = int.Parse(Console.ReadLine() ?? "-1");
-                        exercicio = Exercicios[indexExercicio];
+                        exercicio = _exercicios[indexExercicio];
                     }
                     catch
                     {
@@ -825,7 +787,7 @@ public class Academia
                     try
                     {
                         int indexTreino = int.Parse(Console.ReadLine() ?? "-1");
-                        treino2 = Treinos[indexTreino];
+                        treino2 = _treinos[indexTreino];
                     }
                     catch
                     {
@@ -844,14 +806,13 @@ public class Academia
                     treino2.adicionarExercicio(exercicio);
                     break;
                 case 4:
-                    Console.Clear();
                     listarClientes();
                     Console.Write("Escolha o ID do cliente que deseja inserir avaliação: ");
                     Cliente cliente1;
                     try
                     {
                         int indexCliente = int.Parse(Console.ReadLine() ?? "-1");
-                        cliente1 = Clientes[indexCliente];
+                        cliente1 = _clientes[indexCliente];
                     }
                     catch
                     {
@@ -860,21 +821,20 @@ public class Academia
                         break;
                     }
 
-                    if (!Treinos.Any(t => t.Clientes?.Any(c => c?.Item1 == cliente1) ?? false))
+                    if (!_treinos.Any(t => t.Clientes?.Any(c => c?.Item1 == cliente1) ?? false))
                     {
                         Console.WriteLine("Cliente não faz parte de nenhum treino");
                         App.pausa();
                         break;
                     }
 
-                    Console.Clear();
                     listarTreinosCliente(cliente1);
                     Console.Write("Escolha o ID do treino: ");
                     Treino treino1;
                     try
                     {
                         int indexTreino = int.Parse(Console.ReadLine() ?? "-1");
-                        treino1 = Treinos[indexTreino];
+                        treino1 = _treinos[indexTreino];
                     }
                     catch
                     {
@@ -894,7 +854,8 @@ public class Academia
                     try
                     {
                         int avaliacao = int.Parse(Console.ReadLine() ?? "-1");
-                        if (avaliacao < 0 || avaliacao > 10) throw new Exception("Avaliação inválida");
+                        if (avaliacao < 0 || avaliacao > 10)
+                            throw new Exception("Avaliação inválida");
                         treino1.adicionarAvaliacao(cliente1, avaliacao);
                     }
                     catch
@@ -902,23 +863,20 @@ public class Academia
                         Console.WriteLine("Avaliação inválida");
                         App.pausa();
                     }
-
-                    App.pausa();
                     break;
+
                 case 5:
-                    Console.Clear();
                     listarTreinos();
                     App.pausa();
                     break;
                 case 6:
-                    Console.Clear();
                     listarClientes();
                     Console.Write("Escolha o ID do cliente: ");
                     Cliente cliente2;
                     try
                     {
                         int indexCliente = int.Parse(Console.ReadLine() ?? "-1");
-                        cliente2 = Clientes[indexCliente];
+                        cliente2 = _clientes[indexCliente];
                     }
                     catch
                     {
@@ -926,19 +884,19 @@ public class Academia
                         App.pausa();
                         break;
                     }
-                    Console.Clear();
+
                     listarTreinosCliente(cliente2);
                     App.pausa();
                     break;
+
                 case 7:
-                    Console.Clear();
                     listarTreinadores();
                     Console.Write("Escolha o ID do treinador: ");
                     Treinador treinador2;
                     try
                     {
                         int indexTreinador = int.Parse(Console.ReadLine() ?? "-1");
-                        treinador2 = Treinadores[indexTreinador];
+                        treinador2 = _treinadores[indexTreinador];
                     }
                     catch
                     {
@@ -951,6 +909,7 @@ public class Academia
                     App.pausa();
 
                     break;
+
                 case 8:
                     Console.Clear();
                     Console.WriteLine("Treinos em ordem crescente pela quantidade de dias até o vencimento");
@@ -1000,10 +959,10 @@ public class Academia
         Console.Clear();
         Console.WriteLine("Lista de Treinadores:");
         Console.WriteLine("ID\tCPF\t\tCREF\t\tDATA DE NASCIMENTO\tNOME");
-        for (int i = 0; i < Treinadores.Count; i++)
+        for (int i = 0; i < _treinadores.Count; i++)
         {
             Console.Write($"{i}\t");
-            Treinadores[i].imprimeTreinador();
+            _treinadores[i].imprimeTreinador();
         }
 
         Console.WriteLine();
@@ -1014,10 +973,10 @@ public class Academia
         Console.Clear();
         Console.WriteLine("Lista de Clientes:");
         Console.WriteLine("ID\tCPF\t\tDATA DE NASCIMENTO\tALTURA\tPESO\tNOME");
-        for (int i = 0; i < Clientes.Count; i++)
+        for (int i = 0; i < _clientes.Count; i++)
         {
             Console.Write($"{i}\t");
-            Clientes[i].imprimeCliente();
+            _clientes[i].imprimeCliente();
         }
 
         Console.WriteLine();
@@ -1025,9 +984,9 @@ public class Academia
 
     public void listarTreinos()
     {
-        Console.WriteLine("ID\tTreinador\tClientes\tExercicios\tTipo\tObjetivo\tDuracao\tDataInicio\tVencimento");
+        Console.WriteLine($"ID\tTreinador\tClientes\tExercicios\tTipo\tObjetivo\tDuracao\tDataInicio\tVencimento");
         int i = 0;
-        foreach (Treino treino in Treinos)
+        foreach (Treino treino in _treinos)
         {
             Console.WriteLine(
                 $"{i}\t{treino.Treinador?.Nome}\t{treino.Clientes?.Count}\t{treino.tamanhoExercicios()}\t{treino.Tipo}\t{treino.Objetivo}\t{treino.Duracao}\t{treino.DataInicio}\t{treino.Vencimento}");
@@ -1040,10 +999,10 @@ public class Academia
         Console.Clear();
         Console.WriteLine("Lista de Exercício:");
         Console.WriteLine("ID\tGRUPO MUSCULAR\t\tSÉRIES\t\tREPETIÇÕES\tINTERVALO DE DESCANSO (s)");
-        for (int i = 0; i < Exercicios.Count; i++)
+        for (int i = 0; i < _exercicios.Count; i++)
         {
             Console.Write($"{i}\t");
-            Exercicios[i].imprimeExercicio();
+            _exercicios[i].imprimeExercicio();
         }
 
         Console.WriteLine();
@@ -1051,25 +1010,23 @@ public class Academia
 
     public void listarTreinosCliente(Cliente cliente)
     {
-        Console.WriteLine("Lista de Treinos:");
-        Console.WriteLine($"Tipo\tObjetivo\tDuracao\tDataInicio\tVencimento\tTreinador");
-        for (int i = 0; i < Treinos.Count; i++)
+        Console.WriteLine($"ID\tTipo\tObjetivo\tDuracao\tDataInicio\tVencimento\tTreinador");
+        for (int i = 0; i < _treinos.Count; i++)
         {
-            if (Treinos[i].Clientes?.Any(c => c?.Item1 == cliente) ?? false)
+            if (_treinos[i].Clientes?.Any(c => c?.Item1 == cliente) ?? false)
             {
                 Console.Write($"{i}\t");
-                Treinos[i].imprimeTreino();
+                _treinos[i].imprimeTreino();
             }
-            Exercicios[i].imprimeExercicio();
         }
+
         Console.WriteLine();
     }
 
     public void listarTreinosTreinador(Treinador treinador)
     {
-        Console.Clear();
-        Console.WriteLine("Lista de Treinos:");
-        foreach (Treino treino in Treinos)
+        Console.WriteLine($"Tipo\tObjetivo\tDuracao\tDataInicio\tVencimento\tTreinador");
+        foreach (Treino treino in _treinos)
         {
             if (treino.Treinador == treinador)
             {
