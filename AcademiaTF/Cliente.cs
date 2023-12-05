@@ -6,6 +6,7 @@ public class Cliente : Pessoa
     public Cliente()
     {
         Pagamentos = new List<Pagamento>();
+        MesPagamento = new List<bool>{false, false, false, false, false, false, false, false, false, false, false, false};
     }
     public Cliente(string nome, DateTime nascimento, string cpf, int altura, int peso, Plano planoAtivo)
     {
@@ -16,6 +17,7 @@ public class Cliente : Pessoa
         Peso = peso;
         PlanoAtivo = planoAtivo;
         Pagamentos = new List<Pagamento>();
+        MesPagamento = new List<bool>{false, false, false, false, false, false, false, false, false, false, false, false};
     }
     public Cliente(string nome, DateTime nascimento, string cpf, int altura, int peso)
     {
@@ -25,6 +27,7 @@ public class Cliente : Pessoa
         Altura = altura;
         Peso = peso;
         Pagamentos = new List<Pagamento>();
+        MesPagamento = new List<bool>{false, false, false, false, false, false, false, false, false, false, false, false};
     }
     
     // Atributos
@@ -64,6 +67,7 @@ public class Cliente : Pessoa
         }
     }
     public List<Pagamento> Pagamentos { get; }
+    public List<Boolean> MesPagamento{get;}
 
     // Metodos
     public void criarCliente()
