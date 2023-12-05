@@ -803,7 +803,7 @@ public class Academia
                         App.pausa();
                         break;
                     }
-                    if (_treinos.Any(t => t.Clientes?.Any(c => c?.Item1 == cliente1) ?? false))
+                    if (!_treinos.Any(t => t.Clientes?.Any(c => c?.Item1 == cliente1) ?? false))
                     {
                         Console.WriteLine("Cliente não faz parte de nenhum treino");
                         App.pausa();
@@ -969,7 +969,7 @@ public class Academia
     public void listarTreinosCliente(Cliente cliente)
     {
 
-        Console.WriteLine($"Tipo\tObjetivo\tDuracao\tDataInicio\tVencimento\tTreinador");
+        Console.WriteLine($"ID\tTipo\tObjetivo\tDuracao\tDataInicio\tVencimento\tTreinador");
         for (int i = 0; i < _treinos.Count; i++)
         {
             if (_treinos[i].Clientes?.Any(c => c?.Item1 == cliente) ?? false)
@@ -977,7 +977,6 @@ public class Academia
                 Console.Write($"{i}\t");
                 _treinos[i].imprimeTreino();
             }
-            _exercicios[i].imprimeExercicio();
         }
         Console.WriteLine();
     }
