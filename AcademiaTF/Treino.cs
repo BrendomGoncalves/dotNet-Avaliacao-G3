@@ -136,7 +136,7 @@ public class Treino
             return;
         }
 
-        if (_clientes.Any(c => c?.Item1 == cliente)) throw new Exception("Cliente já cadastrado");
+        if (_clientes.Any(c => c?.Item1 == cliente)) throw new Exception("Cliente já está vinculado a este treino");
         _clientes?.Add((cliente, -1)); // -1 = sem avaliação
     }
 
@@ -210,11 +210,13 @@ public class Treino
     public double MediaAvaliacoes()
     {
         if (Clientes == null) return 0;
-
+        if (Clientes.Count == 0) return 0;
         double media = Clientes!
-            .Where(c => c?.Item2 != -1)
+            .Where(c => c?.Item2 != -1 && c?.Item2 != null)
             .Select(c => c?.Item2 ?? 0)
             .Average();
         return media;
     }
+
+
 }

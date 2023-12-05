@@ -146,24 +146,20 @@ public class Academia
                     Console.WriteLine("Relatório de Treinadores em Ordem Decrescente da Média de Notas dos Treinos:");
                     try
                     {
-                        var mediaTreinadores = Treinadores.Select(treinador =>
+                        List<Treinador> treinadoresMedia = Treinadores
+                            .OrderByDescending(mediaNotasTreinos).ToList();
+
+                        Console.WriteLine("MÉDIA\tCPF\t\tCREF\t\tDATA DE NASCIMENTO\tNOME");
+                        foreach (Treinador treinador in treinadoresMedia)
                         {
-                            var treinosDoTreinador = Treinos.Where(treino =>
-                                treino.Treinador == treinador && treino.MediaAvaliacoes() != -1);
-                            double mediaNotas = treinosDoTreinador.Any()
-                                ? treinosDoTreinador.Average(treino => treino.MediaAvaliacoes())
-                                : -1;
-                            return new { Treinador = treinador, MediaNotas = mediaNotas };
-                        }).OrderByDescending(item => item.MediaNotas);
-                        foreach (var item in mediaTreinadores)
-                        {
-                            Console.WriteLine(
-                                $"Treinador: {item.Treinador.Nome}, Média de Notas: {(item.MediaNotas != -1 ? item.MediaNotas.ToString() : "N/A")}");
+                            Console.Write(mediaNotasTreinos(treinador) + "\t");
+                            treinador.imprimeTreinador();
                         }
                     }
-                    catch
+                    catch (Exception e)
                     {
-                        Console.WriteLine("Nenhum treino vinculado a treinador.");
+                        Console.WriteLine(e);
+                        Console.WriteLine("Nenhum treinador vinculado a treino.");
                         App.pausa();
                         break;
                     }
@@ -1057,6 +1053,28 @@ public class Academia
             {
                 treino.imprimeTreino();
             }
+        }
+    }
+
+    public double mediaNotasTreinos(Treinador treinador)
+    {
+        double media = 0;
+        int count = 0;
+        foreach (Treino treino in Treinos)
+        {
+            if (treino.Treinador == treinador)
+            {
+                media += treino.MediaAvaliacoes();
+                count++;
+            }
+        }
+        if (count > 0)
+        {
+            return media / count;
+        }
+        else
+        {
+            return 0;
         }
     }
 }
