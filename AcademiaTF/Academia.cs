@@ -774,8 +774,18 @@ public class Academia
                         App.pausa();
                         break;
                     }
+                    try
+                    {
 
                     treinoId.adicionarCliente(cliente);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                        App.pausa();
+                        break;
+                    }
+
                     break;
 
                 case 3:
