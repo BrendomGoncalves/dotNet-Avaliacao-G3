@@ -1,3 +1,6 @@
+using System.ComponentModel;
+using System.Dynamic;
+
 namespace AcademiaTF;
 
 public abstract class Pagamento
@@ -50,4 +53,40 @@ public class PagamentoDinheiro : Pagamento
     }
 }
 
+public class PagamentoCartao : Pagamento
+{
+    private string? _numeroCartao;
+    public string NumeroCartao { get=>_numeroCartao; set{
+        if (value == null) throw new Exception("Número do cartão não pode ser nulo");
+        if (value == "") throw new Exception("Número do cartão não pode ser vazio");
+        if(value.Length != 16) throw new Exception("Número do cartão deve ter 16 dígitos");
+        _numeroCartao = value;
+
+    } }
+
+
+    public void RealizarPagamento(double valor)
+    {
+        Console.WriteLine("Informe o número do cartão: ");
+        try
+        {
+            NumeroCartao = Console.ReadLine()!;
+            
+        }
+        catch
+        {
+            throw new Exception("Numero do cartão inválido");
+        }
+        try{
+            Desconto = 0; //desconto de 5%
+            ValorBruto = (valor * 1.10) - Desconto; //taxa e desconto
+            Descricao = $"O pagamento foi feito por cartão no valor de {ValorBruto}";
+            DateTime data = DateTime.Now;
+        }catch{
+            throw new Exception("Pagamento não realizado");
+        }
+  
+        
+    }
 }
+
