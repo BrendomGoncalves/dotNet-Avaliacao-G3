@@ -3,12 +3,6 @@ namespace AcademiaTF;
 public class Treino
 {
     // Construtores
-    public Treino()
-    {
-        _exercicios = new List<Exercicio>();
-        _clientes = new List<(Cliente, int)?>();
-    }
-
     public Treino(string tipo, string objetivo, int duracao, DateTime dataInicio, int vencimento, Treinador? treinador)
     {
         Tipo = tipo;
@@ -117,16 +111,10 @@ public class Treino
         get => _clientes;
     }
 
-
     // Metodos
     public int tamanhoExercicios()
     {
         return _exercicios?.Count ?? 0;
-    }
-
-    public int tamanhoClientes()
-    {
-        return _clientes?.Count ?? 0;
     }
 
     public void adicionarExercicio(Exercicio exercicio)
@@ -220,11 +208,12 @@ public class Treino
 
     public double MediaAvaliacoes()
     {
-        // if (_clientes == null || !_clientes.Any())
-        //     return -1;
-        //
-        // var notas = _clientes.Where(c => c.Item2 != -1).Select(c => c.Item2);
-        // return notas.Any() ? notas.Average() : -1;
-        return -1;
+        if (_clientes == null) return 0;
+
+        double media = _clientes
+            .Where(c => c?.Item2 != -1)
+            .Select(c => c?.Item2 ?? 0)
+            .Average();
+        return media;
     }
 }

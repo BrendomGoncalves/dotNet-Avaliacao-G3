@@ -740,20 +740,18 @@ public class Academia
                     break;
                 case 2:
                     Console.Clear();
-                    if (Treinos.Count == 0)
-                    {
+                    if (Treinos.Count == 0) {
                         Console.WriteLine("Nenhum treino cadastrado");
                         App.pausa();
                         break;
                     }
-
                     if (Clientes.Count == 0)
                     {
                         Console.WriteLine("Nenhum cliente cadastrado");
                         App.pausa();
                         break;
                     }
-
+                    Console.Clear();
                     listarClientes();
                     Console.Write("Escolha o ID do cliente: ");
                     Cliente cliente;
@@ -775,7 +773,7 @@ public class Academia
                         App.pausa();
                         break;
                     }
-
+                    Console.Clear();
                     listarTreinos();
                     Console.Write("Escolha o ID do treino: ");
                     Treino treinoId;
@@ -790,8 +788,8 @@ public class Academia
                         App.pausa();
                         break;
                     }
-
                     treinoId.adicionarCliente(cliente);
+                    App.pausa();
                     break;
                 case 3:
                     Console.Clear();
@@ -850,14 +848,12 @@ public class Academia
                         App.pausa();
                         break;
                     }
-
                     if (Treinos.Any(t => t.Clientes?.Any(c => c?.Item1 == cliente1) ?? false))
                     {
                         Console.WriteLine("Cliente não faz parte de nenhum treino");
                         App.pausa();
                         break;
                     }
-
                     Console.Clear();
                     listarTreinosCliente(cliente1);
                     Console.Write("Escolha o ID do treino: ");
@@ -880,7 +876,6 @@ public class Academia
                         App.pausa();
                         break;
                     }
-
                     Console.Write("Digite a avaliação: ");
                     try
                     {
@@ -1012,7 +1007,7 @@ public class Academia
 
     public void listarTreinos()
     {
-        Console.WriteLine($"ID\tTreinador\tClientes\tExercicios\tTipo\tObjetivo\tDuracao\tDataInicio\tVencimento");
+        Console.WriteLine("ID\tTreinador\tClientes\tExercicios\tTipo\tObjetivo\tDuracao\tDataInicio\tVencimento");
         int i = 0;
         foreach (Treino treino in Treinos)
         {
@@ -1021,7 +1016,6 @@ public class Academia
             i++;
         }
     }
-
     public void listarExercicios()
     {
         Console.Clear();
