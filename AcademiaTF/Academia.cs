@@ -9,10 +9,12 @@ public class Academia
         Exercicios = new List<Exercicio>();
         Treinadores = new List<Treinador>();
         Clientes = new List<Cliente>();
-        criarTreinadores();
-        criarClientes();
-        criarExercicios();
-        criarTreinos();
+        
+        // METODOS DE TESTE
+        // criarTreinadores();
+        // criarClientes();
+        // criarExercicios();
+        // criarTreinos();
     }
 
     // Propriedades
@@ -24,70 +26,72 @@ public class Academia
 
     public List<Cliente> Clientes { get; }
 
-    //criando treinadores para teste
-    public void criarTreinadores()
-    {
-        Treinador t1 = new Treinador("João", new DateTime(1990, 10, 10), "12345678901", "123456-4/AA");
-        Treinador t2 = new Treinador("Maria", new DateTime(1990, 10, 10), "12345678902", "123456-4/AB");
-        Treinador t3 = new Treinador("José", new DateTime(1990, 10, 10), "12345678903", "123456-4/AC");
-        Treinador t4 = new Treinador("Ana", new DateTime(1990, 10, 10), "12345678904", "123456-4/AE");
-        Treinador t5 = new Treinador("Pedro", new DateTime(1990, 10, 10), "12345678905", "123456-4/AF");
-        Treinadores.Add(t1);
-        Treinadores.Add(t2);
-        Treinadores.Add(t3);
-        Treinadores.Add(t4);
-        Treinadores.Add(t5);
-    }
-
-    //criando clientes para teste
-    public void criarClientes()
-    {
-        Cliente c1 = new Cliente("igor", new DateTime(1990, 10, 10), "12345678901", 185, 80);
-        Cliente c2 = new Cliente("lima", new DateTime(1990, 10, 10), "12345678902", 180, 50);
-        Cliente c3 = new Cliente("rocha", new DateTime(1990, 10, 10), "12345678903", 165, 80);
-        Clientes.Add(c1);
-        Clientes.Add(c2);
-        Clientes.Add(c3);
-    }
-
-    //craindo exercicios para teste
-    public void criarExercicios()
-    {
-        Exercicio e1 = new Exercicio("Pernas", 3, 10, 30);
-        Exercicio e2 = new Exercicio("Braços", 3, 10, 30);
-        Exercicio e3 = new Exercicio("Peito", 3, 10, 30);
-        Exercicio e4 = new Exercicio("Costas", 3, 10, 30);
-        Exercicio e5 = new Exercicio("Ombros", 3, 10, 30);
-        Exercicio e6 = new Exercicio("Abdomen", 3, 10, 30);
-        Exercicios.Add(e1);
-        Exercicios.Add(e2);
-        Exercicios.Add(e3);
-        Exercicios.Add(e4);
-        Exercicios.Add(e5);
-        Exercicios.Add(e6);
-    }
-
-    // criando treinos para teste
-    public void criarTreinos()
-    {
-        Treino t1 = new Treino("Treino 1", "Perda peso", 30, new DateTime(2023, 12, 15), 5, Treinadores[0],
-            Exercicios.Take(4).ToList());
-        Treino t2 = new Treino("Treino 2", "Ganho de massa", 25, new DateTime(2023, 12, 20), 6, Treinadores[1],
-            Exercicios.Take(4).ToList());
-        Treino t3 = new Treino("Treino 3", "Fortalecimento", 35, new DateTime(2024, 1, 6), 7, Treinadores[2],
-            Exercicios.Take(4).ToList());
-        Treino t4 = new Treino("Treino 4", "Jogador", 50, new DateTime(2024, 2, 20), 8, Treinadores[3],
-            Exercicios.Take(4).ToList());
-        Treino t5 = new Treino("Treino 5", "Corrida", 45, new DateTime(2023, 12, 10), 4, Treinadores[4],
-            Exercicios.Take(4).ToList());
-        Treinos.Add(t1);
-        Treinos.Add(t2);
-        Treinos.Add(t3);
-        Treinos.Add(t4);
-        Treinos.Add(t5);
-    }
+    // // METODOS DE TESTE
+    // //criando treinadores para teste
+    // public void criarTreinadores()
+    // {
+    //     Treinador t1 = new Treinador("João", new DateTime(1990, 10, 10), "12345678901", "123456-4/AA");
+    //     Treinador t2 = new Treinador("Maria", new DateTime(1990, 10, 10), "12345678902", "123456-4/AB");
+    //     Treinador t3 = new Treinador("José", new DateTime(1990, 10, 10), "12345678903", "123456-4/AC");
+    //     Treinador t4 = new Treinador("Ana", new DateTime(1990, 10, 10), "12345678904", "123456-4/AE");
+    //     Treinador t5 = new Treinador("Pedro", new DateTime(1990, 10, 10), "12345678905", "123456-4/AF");
+    //     Treinadores.Add(t1);
+    //     Treinadores.Add(t2);
+    //     Treinadores.Add(t3);
+    //     Treinadores.Add(t4);
+    //     Treinadores.Add(t5);
+    // }
+    //
+    // //criando clientes para teste
+    // public void criarClientes()
+    // {
+    //     Cliente c1 = new Cliente("igor", new DateTime(1990, 10, 10), "12345678901", 185, 80);
+    //     Cliente c2 = new Cliente("lima", new DateTime(1990, 10, 10), "12345678902", 180, 50);
+    //     Cliente c3 = new Cliente("rocha", new DateTime(1990, 10, 10), "12345678903", 165, 80);
+    //     Clientes.Add(c1);
+    //     Clientes.Add(c2);
+    //     Clientes.Add(c3);
+    // }
+    //
+    // //craindo exercicios para teste
+    // public void criarExercicios()
+    // {
+    //     Exercicio e1 = new Exercicio("Pernas", 3, 10, 30);
+    //     Exercicio e2 = new Exercicio("Braços", 3, 10, 30);
+    //     Exercicio e3 = new Exercicio("Peito", 3, 10, 30);
+    //     Exercicio e4 = new Exercicio("Costas", 3, 10, 30);
+    //     Exercicio e5 = new Exercicio("Ombros", 3, 10, 30);
+    //     Exercicio e6 = new Exercicio("Abdomen", 3, 10, 30);
+    //     Exercicios.Add(e1);
+    //     Exercicios.Add(e2);
+    //     Exercicios.Add(e3);
+    //     Exercicios.Add(e4);
+    //     Exercicios.Add(e5);
+    //     Exercicios.Add(e6);
+    // }
+    //
+    // // criando treinos para teste
+    // public void criarTreinos()
+    // {
+    //     Treino t1 = new Treino("Treino 1", "Perda peso", 30, new DateTime(2023, 12, 15), 5, Treinadores[0],
+    //         Exercicios.Take(4).ToList());
+    //     Treino t2 = new Treino("Treino 2", "Ganho de massa", 25, new DateTime(2023, 12, 20), 6, Treinadores[1],
+    //         Exercicios.Take(4).ToList());
+    //     Treino t3 = new Treino("Treino 3", "Fortalecimento", 35, new DateTime(2024, 1, 6), 7, Treinadores[2],
+    //         Exercicios.Take(4).ToList());
+    //     Treino t4 = new Treino("Treino 4", "Jogador", 50, new DateTime(2024, 2, 20), 8, Treinadores[3],
+    //         Exercicios.Take(4).ToList());
+    //     Treino t5 = new Treino("Treino 5", "Corrida", 45, new DateTime(2023, 12, 10), 4, Treinadores[4],
+    //         Exercicios.Take(4).ToList());
+    //     Treinos.Add(t1);
+    //     Treinos.Add(t2);
+    //     Treinos.Add(t3);
+    //     Treinos.Add(t4);
+    //     Treinos.Add(t5);
+    // }
 
     // Metodos
+    
     public void menuTreinador()
     {
         int opcao;
