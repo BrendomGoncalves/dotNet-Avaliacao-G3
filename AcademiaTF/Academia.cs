@@ -9,7 +9,8 @@ public class Academia
         Exercicios = new List<Exercicio>();
         Treinadores = new List<Treinador>();
         Clientes = new List<Cliente>();
-        
+        Planos = new List<Plano>();
+
         // METODOS DE TESTE
         // criarTreinadores();
         // criarClientes();
@@ -573,6 +574,9 @@ public class Academia
                         novoCliente.criarCliente();
                         if (Clientes.Any(c => c.Cpf == novoCliente.Cpf))
                             throw new Exception("Cliente já cadastrado (CPF repetido)");
+                        
+                        
+                        
                         Clientes.Add(novoCliente);
                         Console.WriteLine("Cliente Cadastrado com sucesso!");
                     }
@@ -1044,6 +1048,15 @@ public class Academia
         }
 
         Console.WriteLine();
+    }
+
+    public void listarPlanos()
+    {
+        for (int i = 0; i < Planos.Count; i++)
+        {
+            Console.Write($"({i})\t");
+            Planos[i].imprimePlano();
+        }
     }
 
     public void listarTreinosCliente(Cliente cliente)
