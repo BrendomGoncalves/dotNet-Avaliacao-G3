@@ -15,8 +15,6 @@ public class Academia
         criarTreinos();
     }
 
-    // Atributos
-
     // Propriedades
     public List<Treino> Treinos { get; }
 
@@ -644,7 +642,7 @@ public class Academia
         {
             foreach (Treinador treinador in treinadoresAniversariantes)
             {
-                treinador.imprimeTreinador();
+                Console.WriteLine($"{treinador.Nome} - {treinador.Nascimento:dd/MM/yyyy}");
             }
         }
         else Console.WriteLine("Nenhum treinador encontrado.");
@@ -654,10 +652,11 @@ public class Academia
         {
             foreach (Cliente cliente in clientesAniversariantes)
             {
-                cliente.imprimeCliente();
+                Console.WriteLine($"{cliente.Nome} - {cliente.Nascimento:dd/MM/yyyy}");
             }
         }
         else Console.WriteLine("Nenhum cliente encontrado.");
+        App.pausa();
     }
 
     public void menuTreino()
