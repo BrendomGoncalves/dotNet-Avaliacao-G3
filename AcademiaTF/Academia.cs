@@ -721,9 +721,8 @@ public class Academia
                         Console.WriteLine("Pagamento realizado com sucesso!");
                         App.pausa();
                     }
-                    catch (Exception e)
+                    catch
                     {
-                        Console.WriteLine("" + e);
                         Console.WriteLine("Pagamento Cancelado");
                     }
                     App.pausa();
