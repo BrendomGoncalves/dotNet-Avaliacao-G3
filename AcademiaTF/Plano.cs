@@ -33,8 +33,8 @@ public class Plano
 
         Console.Write("Valor por mês do plano: ");
         string? valorInput = Console.ReadLine();
-        int valorMes;
-        while (!int.TryParse(valorInput, out valorMes))
+        double valorMes;
+        while (!double.TryParse(valorInput, out valorMes))
         {
             Console.Write("Por favor, insira um número válido para o valor da mensalidade: ");
             valorInput = Console.ReadLine();
@@ -52,7 +52,7 @@ public class Plano
         Console.Write("Valor por mês do plano: ");
         string? valorInput = Console.ReadLine();
 
-        ValorPorMes = int.Parse(valorInput!);
+        ValorPorMes = double.Parse(valorInput!);
 
     }
 
