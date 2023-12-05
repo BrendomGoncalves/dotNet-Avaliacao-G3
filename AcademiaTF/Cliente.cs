@@ -3,20 +3,26 @@ namespace AcademiaTF;
 public class Cliente : Pessoa
 {
     // Construtores
-    public Cliente() { }
-    public Cliente(string nome, DateTime nascimento, string cpf, int altura, int peso)
+    public Cliente()
+    {
+        Pagamentos = new List<Pagamento>();
+    }
+    public Cliente(string nome, DateTime nascimento, string cpf, int altura, int peso, Plano planoAtivo)
     {
         Nome = nome;
         Nascimento = nascimento;
         Cpf = cpf;
         Altura = altura;
         Peso = peso;
+        PlanoAtivo = planoAtivo;
+        Pagamentos = new List<Pagamento>();
     }
     
     // Atributos
     private int _altura;
     private int _peso;
-    
+    private Plano _planoAtivo;
+
     // Propriedades
     public int Altura
     {
@@ -39,7 +45,17 @@ public class Cliente : Pessoa
             _peso = value;
         }
     }
-    
+    public Plano PlanoAtivo
+    {
+        get => _planoAtivo;
+        set
+        {
+            if (value == null) throw new Exception("Plano inválido");
+            _planoAtivo = value;
+        }
+    }
+    public List<Pagamento> Pagamentos { get; }
+
     // Metodos
     public void criarCliente()
     {
