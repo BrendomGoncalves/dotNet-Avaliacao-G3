@@ -33,4 +33,21 @@ public abstract class Pagamento
 
 
 }
+
+public class PagamentoDinheiro : Pagamento
+{
+    public void RealizarPagamento(double valor)
+    {
+        try{
+
+        Desconto = valor * 0.05; //desconto de 5%
+        ValorBruto = (valor * 1.10) - Desconto; //taxa e desconto
+        Descricao = $"O pagamento foi feito por dinheiro no valor de {ValorBruto}";
+        DateTime data = DateTime.Now;
+        }catch{
+            throw new Exception("O valor informado é inválido");
+        }
+    }
+}
+
 }
