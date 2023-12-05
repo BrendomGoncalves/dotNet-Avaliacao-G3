@@ -83,7 +83,6 @@ public class Academia
         Treinos.Add(t4);
         Treinos.Add(t5);
     }
-
     #endregion
 
     // Propriedades
@@ -148,22 +147,29 @@ public class Academia
                 case 3:
                     Console.Clear();
                     Console.WriteLine("Relatório de Treinadores em Ordem Decrescente da Média de Notas dos Treinos:");
-                    var mediaTreinadores = Treinadores.Select(treinador =>
+                    try
                     {
-                        var treinosDoTreinador = Treinos.Where(treino =>
-                            treino.Treinador == treinador && treino.MediaAvaliacoes() != -1);
-                        double mediaNotas = treinosDoTreinador.Any()
-                            ? treinosDoTreinador.Average(treino => treino.MediaAvaliacoes())
-                            : -1;
-                        return new { Treinador = treinador, MediaNotas = mediaNotas };
-                    }).OrderByDescending(item => item.MediaNotas);
+                        var mediaTreinadores = Treinadores.Select(treinador =>
+                        {
+                            var treinosDoTreinador = Treinos.Where(treino =>
+                                treino.Treinador == treinador && treino.MediaAvaliacoes() != -1);
+                            double mediaNotas = treinosDoTreinador.Any()
+                                ? treinosDoTreinador.Average(treino => treino.MediaAvaliacoes())
+                                : -1;
+                            return new { Treinador = treinador, MediaNotas = mediaNotas };
+                        }).OrderByDescending(item => item.MediaNotas);
 
-                    foreach (var item in mediaTreinadores)
-                    {
-                        Console.WriteLine(
-                            $"Treinador: {item.Treinador.Nome}, Média de Notas: {(item.MediaNotas != -1 ? item.MediaNotas.ToString() : "N/A")}");
+                        foreach (var item in mediaTreinadores)
+                        {
+                            Console.WriteLine(
+                                $"Treinador: {item.Treinador.Nome}, Média de Notas: {(item.MediaNotas != -1 ? item.MediaNotas.ToString() : "N/A")}");
+                        }
                     }
-
+                    catch
+                    {
+                        Console.WriteLine("Nenhum treino vinculado ao treinador");
+                    }
+                    App.pausa();
                     break;
                 case 0:
                     break;
@@ -740,17 +746,20 @@ public class Academia
                     break;
                 case 2:
                     Console.Clear();
-                    if (Treinos.Count == 0) {
+                    if (Treinos.Count == 0)
+                    {
                         Console.WriteLine("Nenhum treino cadastrado");
                         App.pausa();
                         break;
                     }
+
                     if (Clientes.Count == 0)
                     {
                         Console.WriteLine("Nenhum cliente cadastrado");
                         App.pausa();
                         break;
                     }
+
                     Console.Clear();
                     listarClientes();
                     Console.Write("Escolha o ID do cliente: ");
@@ -773,6 +782,7 @@ public class Academia
                         App.pausa();
                         break;
                     }
+
                     Console.Clear();
                     listarTreinos();
                     Console.Write("Escolha o ID do treino: ");
@@ -788,6 +798,7 @@ public class Academia
                         App.pausa();
                         break;
                     }
+
                     treinoId.adicionarCliente(cliente);
                     App.pausa();
                     break;
@@ -848,12 +859,14 @@ public class Academia
                         App.pausa();
                         break;
                     }
-                    if (Treinos.Any(t => t.Clientes?.Any(c => c?.Item1 == cliente1) ?? false))
+
+                    if (!Treinos.Any(t => t.Clientes?.Any(c => c?.Item1 == cliente1) ?? false))
                     {
                         Console.WriteLine("Cliente não faz parte de nenhum treino");
                         App.pausa();
                         break;
                     }
+
                     Console.Clear();
                     listarTreinosCliente(cliente1);
                     Console.Write("Escolha o ID do treino: ");
@@ -876,6 +889,7 @@ public class Academia
                         App.pausa();
                         break;
                     }
+
                     Console.Write("Digite a avaliação: ");
                     try
                     {
@@ -888,6 +902,7 @@ public class Academia
                         Console.WriteLine("Avaliação inválida");
                         App.pausa();
                     }
+
                     App.pausa();
                     break;
                 case 5:
@@ -911,7 +926,7 @@ public class Academia
                         App.pausa();
                         break;
                     }
-
+                    Console.Clear();
                     listarTreinosCliente(cliente2);
                     App.pausa();
                     break;
@@ -957,14 +972,17 @@ public class Academia
                     Console.WriteLine("Treinos cujo objetivo contenham determinada palavra:");
                     Console.Write("Palavra: ");
                     string? palavra = Console.ReadLine();
-                    List<Treino> treinoPalavra = Treinos.Where(t => t.Objetivo!.Contains(palavra ?? string.Empty)).ToList();
+                    List<Treino> treinoPalavra =
+                        Treinos.Where(t => t.Objetivo!.Contains(palavra ?? string.Empty)).ToList();
                     if (treinoPalavra.Count > 0)
                     {
                         foreach (Treino treino in treinoPalavra)
                         {
                             treino.imprimeTreino();
                         }
-                    } else Console.WriteLine("Nenhum treino encontrado.");
+                    }
+                    else Console.WriteLine("Nenhum treino encontrado.");
+
                     App.pausa();
                     break;
                 case 0:
@@ -1016,6 +1034,7 @@ public class Academia
             i++;
         }
     }
+
     public void listarExercicios()
     {
         Console.Clear();
@@ -1032,6 +1051,7 @@ public class Academia
 
     public void listarTreinosCliente(Cliente cliente)
     {
+        Console.WriteLine("Lista de Treinos:");
         Console.WriteLine($"Tipo\tObjetivo\tDuracao\tDataInicio\tVencimento\tTreinador");
         for (int i = 0; i < Treinos.Count; i++)
         {
@@ -1040,16 +1060,15 @@ public class Academia
                 Console.Write($"{i}\t");
                 Treinos[i].imprimeTreino();
             }
-
             Exercicios[i].imprimeExercicio();
         }
-
         Console.WriteLine();
     }
 
     public void listarTreinosTreinador(Treinador treinador)
     {
-        Console.WriteLine("Tipo\tObjetivo\tDuracao\tDataInicio\tVencimento\tTreinador");
+        Console.Clear();
+        Console.WriteLine("Lista de Treinos:");
         foreach (Treino treino in Treinos)
         {
             if (treino.Treinador == treinador)

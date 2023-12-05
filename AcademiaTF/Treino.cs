@@ -128,7 +128,6 @@ public class Treino
         if (_exercicios.Any(e => e == exercicio)) throw new Exception("Exercício já cadastrado");
         _exercicios?.Add(exercicio);
     }
-
     public void adicionarCliente(Cliente cliente)
     {
         if (_clientes == null)
@@ -190,7 +189,8 @@ public class Treino
 
     public void imprimeTreino()
     {
-        Console.WriteLine($"{Tipo}\t{Objetivo}\t{Duracao}\t{DataInicio:dd/MM/yyyy}\t{Vencimento}\t{Treinador?.Nome}");
+        if(Objetivo!.Length >= 8) Console.WriteLine($"{Tipo}\t{Objetivo}\t{Duracao}\t{DataInicio:dd/MM/yyyy}\t{Vencimento}\t{Treinador?.Nome}");
+        else Console.WriteLine($"{Tipo}\t{Objetivo}\t\t{Duracao}\t{DataInicio:dd/MM/yyyy}\t{Vencimento}\t{Treinador?.Nome}");
     }
 
     public void adicionarAvaliacao(Cliente cliente, int avaliacao)
@@ -210,7 +210,7 @@ public class Treino
     {
         if (_clientes == null) return 0;
 
-        double media = _clientes
+        double media = Clientes!
             .Where(c => c?.Item2 != -1)
             .Select(c => c?.Item2 ?? 0)
             .Average();
