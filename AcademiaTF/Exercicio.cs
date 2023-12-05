@@ -81,7 +81,7 @@ public class Exercicio
         Series = series;
 
         Console.Write("Quantidade de repetições: ");
-        string repeticoesInput = Console.ReadLine();
+        string? repeticoesInput = Console.ReadLine();
         int repeticoes;
         while (!int.TryParse(repeticoesInput, out repeticoes))
         {
@@ -93,7 +93,7 @@ public class Exercicio
 
 
         Console.Write("Tempo de intervalo (em segundos): ");
-        string tempoIntervaloInput = Console.ReadLine();
+        string? tempoIntervaloInput = Console.ReadLine();
         int tempoIntervalo;
         while (!int.TryParse(tempoIntervaloInput, out tempoIntervalo))
         {
@@ -112,17 +112,17 @@ public class Exercicio
         Console.Write("Quantidade de séries: ");
         string? series = Console.ReadLine();
 
-        Series = int.Parse(series);
+        Series = int.Parse(series!);
 
         Console.Write("Quantidade de repetições: ");
         string? repeticoes = Console.ReadLine();
 
-        Repeticoes = int.Parse(repeticoes);
+        Repeticoes = int.Parse(repeticoes!);
 
 
         Console.Write("Tempo de intervalo (em segundos): ");
         string? tempoIntervalo = Console.ReadLine();
-        TempoIntervalo = int.Parse(tempoIntervalo);
+        TempoIntervalo = int.Parse(tempoIntervalo!);
     }
 
     public void imprimeExercicio()

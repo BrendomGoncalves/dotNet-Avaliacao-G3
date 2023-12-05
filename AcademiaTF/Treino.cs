@@ -189,8 +189,9 @@ public class Treino
 
     public void imprimeTreino()
     {
-        if(Objetivo!.Length >= 8) Console.WriteLine($"{Tipo}\t{Objetivo}\t{Duracao}\t{DataInicio:dd/MM/yyyy}\t{Vencimento}\t{Treinador?.Nome}");
-        else Console.WriteLine($"{Tipo}\t{Objetivo}\t\t{Duracao}\t{DataInicio:dd/MM/yyyy}\t{Vencimento}\t{Treinador?.Nome}");
+        Console.WriteLine(Objetivo!.Length >= 8
+            ? $"{Tipo}\t{Objetivo}\t{Duracao}\t{DataInicio:dd/MM/yyyy}\t{Vencimento}\t{Treinador?.Nome}"
+            : $"{Tipo}\t{Objetivo}\t\t{Duracao}\t{DataInicio:dd/MM/yyyy}\t{Vencimento}\t{Treinador?.Nome}");
     }
 
     public void adicionarAvaliacao(Cliente cliente, int avaliacao)
@@ -208,7 +209,7 @@ public class Treino
 
     public double MediaAvaliacoes()
     {
-        if (_clientes == null) return 0;
+        if (Clientes == null) return 0;
 
         double media = Clientes!
             .Where(c => c?.Item2 != -1)
