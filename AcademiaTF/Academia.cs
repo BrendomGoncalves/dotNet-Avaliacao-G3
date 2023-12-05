@@ -9,9 +9,10 @@ public class Academia
         _exercicios = new List<Exercicio>();
         _treinadores = new List<Treinador>();
         _clientes = new List<Cliente>();
-        // criarTreinadores();
-        // criarClientes();
-        // criarExercicios();
+        criarTreinadores();
+        criarClientes();
+        criarExercicios();
+        criarTreinos();
     }
 
     // Atributos
@@ -61,6 +62,25 @@ public class Academia
         _exercicios.Add(e4);
         _exercicios.Add(e5);
         _exercicios.Add(e6);
+    }
+
+    public void criarTreinos()
+    {
+        Treino t1 = new Treino("Treino 1", "Perda peso", 30, new DateTime(2023, 12, 15), 5, Treinadores[0],
+            Exercicios.Take(4).ToList());
+        Treino t2 = new Treino("Treino 2", "Ganho de massa", 25, new DateTime(2023, 12, 20), 6, Treinadores[1],
+            Exercicios.Take(4).ToList());
+        Treino t3 = new Treino("Treino 3", "Fortalecimento", 35, new DateTime(2024, 1, 6), 7, Treinadores[2],
+            Exercicios.Take(4).ToList());
+        Treino t4 = new Treino("Treino 4", "Jogador", 50, new DateTime(2024, 2, 20), 8, Treinadores[3],
+            Exercicios.Take(4).ToList());
+        Treino t5 = new Treino("Treino 5", "Corrida", 45, new DateTime(2023, 12, 10), 4, Treinadores[4],
+            Exercicios.Take(4).ToList());
+        Treinos.Add(t1);
+        Treinos.Add(t2);
+        Treinos.Add(t3);
+        Treinos.Add(t4);
+        Treinos.Add(t5);
     }
 
     // Propriedades
@@ -137,27 +157,28 @@ public class Academia
                 case 3:
                     Console.Clear();
                     Console.WriteLine("Relatório de Treinadores em Ordem Decrescente da Média de Notas dos Treinos:");
-                    var mediaTreinadores = _treinadores.Select(treinador =>
+                    try
                     {
-                        var treinosDoTreinador = _treinos.Where(treino =>
-                            treino.Treinador == treinador && treino.MediaAvaliacoes() != -1);
-                        double mediaNotas = treinosDoTreinador.Any()
-                            ? treinosDoTreinador.Average(treino => treino.MediaAvaliacoes())
-                            : -1;
-                        return new { Treinador = treinador, MediaNotas = mediaNotas };
-                    }).OrderByDescending(item => item.MediaNotas);
-                    
-                    if (mediaTreinadores.Any())
-                    {
+                        var mediaTreinadores = _treinadores.Select(treinador =>
+                        {
+                            var treinosDoTreinador = _treinos.Where(treino =>
+                                treino.Treinador == treinador && treino.MediaAvaliacoes() != -1);
+                            double mediaNotas = treinosDoTreinador.Any()
+                                ? treinosDoTreinador.Average(treino => treino.MediaAvaliacoes())
+                                : -1;
+                            return new { Treinador = treinador, MediaNotas = mediaNotas };
+                        }).OrderByDescending(item => item.MediaNotas);
                         foreach (var item in mediaTreinadores)
                         {
                             Console.WriteLine(
                                 $"Treinador: {item.Treinador.Nome}, Média de Notas: {(item.MediaNotas != -1 ? item.MediaNotas.ToString() : "N/A")}");
                         }
                     }
-                    else
+                    catch
                     {
                         Console.WriteLine("Nenhum treino vinculado a treinador.");
+                        App.pausa();
+                        break;
                     }
                     App.pausa();
                     break;
@@ -767,8 +788,6 @@ public class Academia
                     }
 
                     treinoId.adicionarCliente(cliente);
-
-
                     break;
 
                 case 3:
@@ -869,6 +888,7 @@ public class Academia
                         Console.WriteLine("Avaliação inválida");
                         App.pausa();
                     }
+
                     break;
 
                 case 5:
@@ -990,6 +1010,7 @@ public class Academia
 
     public void listarTreinos()
     {
+        Console.Clear();
         Console.WriteLine($"ID\tTreinador\tClientes\tExercicios\tTipo\tObjetivo\tDuracao\tDataInicio\tVencimento");
         int i = 0;
         foreach (Treino treino in _treinos)
