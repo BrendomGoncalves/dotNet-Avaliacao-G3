@@ -19,9 +19,46 @@ public class Plano
         get => _valorPorMes;
         set
         {
-            if(double.IsNullOrWhiteSpace(value)) throw new Exception ("Não pode ser um valor nulo");
-            _valorPorMes = value
+            if(double.IsNegative(value)) throw new Exception ("Não pode ser um valor negativo");
+            _valorPorMes = value;
         }
+    }
+
+    public void criarPlano()
+    {
+        Console.Clear();
+        Console.WriteLine("CRIAR PLANO:");
+        Console.Write("Nome do plano: ");
+        Titulo = Console.ReadLine();
+
+        Console.Write("Valor por mês do plano: ");
+        string? valorInput = Console.ReadLine();
+        int valorMes;
+        while (!int.TryParse(valorInput, out valorMes))
+        {
+            Console.Write("Por favor, insira um número válido para o valor da mensalidade: ");
+            valorInput = Console.ReadLine();
+        }
+
+        ValorPorMes = valorMes;
+
+    }
+
+    public void editarPlano()
+    {
+        Console.Clear();
+        Console.WriteLine("EDITAR PLANO:");
+
+        Console.Write("Valor por mês do plano: ");
+        string? valorInput = Console.ReadLine();
+
+        ValorPorMes = int.Parse(valorInput!);
+
+    }
+
+    public void imprimePlano()
+    {
+        Console.WriteLine($"{Titulo}\t\t{ValorPorMes}");
     }
 
 }

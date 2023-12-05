@@ -9,6 +9,7 @@ public class Academia
         Exercicios = new List<Exercicio>();
         Treinadores = new List<Treinador>();
         Clientes = new List<Cliente>();
+        Planos = new List<Plano>();
         
         // METODOS DE TESTE
         // criarTreinadores();
@@ -922,15 +923,9 @@ public class Academia
                         App.pausa();
                         break;
                     }
-
                     listarTreinosTreinador(treinador2);
                     App.pausa();
-
                     break;
-                case 8:
-
-                //falta ajustar 
-
                 case 8:
                     Console.Clear();
                     Console.WriteLine("Treinos em ordem crescente pela quantidade de dias até o vencimento");
@@ -974,6 +969,142 @@ public class Academia
             }
         } while (opcao != 0);
     }
+
+    public void menuPlano(){
+        int opcao;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine("== Menu Planos ==");
+            Console.WriteLine("1. Gerenciar Planos");
+            Console.WriteLine("0. Voltar");
+            Console.Write("> ");
+            try
+            {
+                opcao = int.Parse(Console.ReadLine() ?? "0");
+            }
+            catch
+            {
+                opcao = -1;
+            }
+
+            switch (opcao)
+            {
+                case 1:
+                    gerenciaPlanos();
+                    break;
+                case 0:
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida!");
+                    App.pausa();
+                    break;
+            }
+        } while (opcao != 0);
+    }
+
+    private void gerenciaPlanos(){
+        int opcao;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine("== Gerenciar Planos ==");
+            Console.WriteLine("1. Cadastrar Plano");
+            Console.WriteLine("2. Listar Planos");
+            Console.WriteLine("3. Editar Plano");
+            Console.WriteLine("4. Remover Plano");
+            Console.WriteLine("0. Voltar");
+            Console.Write("> ");
+            try
+            {
+                opcao = int.Parse(Console.ReadLine() ?? "0");
+            }
+            catch
+            {
+                opcao = -1;
+            }
+
+            string? titulo;
+            switch (opcao)
+            {
+                case 1:
+                    Console.Clear();
+                    Plano novoPlano = new Plano();
+                    try
+                    {
+                        novoPlano.criarPlano();
+                        if (Planos.Any(c => c.Titulo == novoPlano.Titulo))
+                            throw new Exception("Plano já cadastrado com esse título");
+                        Planos.Add(novoPlano);
+                        Console.WriteLine("Plano Cadastrado com sucesso!");
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                        Console.WriteLine("Cadastro Cancelado! Realize a operação novamente");
+                        App.pausa();
+                    }
+                    App.pausa();
+                    break;
+                case 2:
+                    Console.Clear();
+                    Console.WriteLine("Lista de Planos:");
+                    Console.WriteLine("NOME DO PLANO\t\tVALOR");
+                    foreach (Plano plano in Planos)
+                    {
+                        plano.imprimePlano();
+                    }
+                    Console.WriteLine();
+                    App.pausa();
+                    break;
+                case 3:
+                    Console.Clear();
+                    Console.WriteLine("EDITAR PLANO:");
+                    Console.Write("Digite o título do plano: ");
+                    titulo = Console.ReadLine();
+                    try
+                    {
+                        Plano ePlano = Planos.Find(cliente => cliente.Titulo == titulo) ??
+                                           throw new Exception("Plano não encontrado");
+                        ePlano.editarPlano();
+                        Console.WriteLine("Plano editado com sucesso!");
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Edicao Cancelada! Realize a operação novamente");
+                        App.pausa();
+                    }
+                    App.pausa();
+                    break;
+                case 4:
+                    Console.Clear();
+                    Console.WriteLine("REMOVER PLANO:");
+                    Console.WriteLine("Digite o título do plano: ");
+                    titulo = Console.ReadLine();
+                    try
+                    {
+                        Plano rPlano = Planos.Find(plano => plano.Titulo == titulo) ??
+                                           throw new Exception("Plano não encontrado");
+                        Planos.Remove(rPlano);
+                        Console.WriteLine("Plano removido com sucesso!");
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Remoção Cancelada! Realize a operação novamente");
+                        App.pausa();
+                    }
+
+                    App.pausa();
+                    break;
+                case 0:
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida!");
+                    break;
+            }
+        } while (opcao != 0);
+    }
+
 
     //treinos cujo objetivo contenham determinada palavra.
     public void TreinosPorPalavraChave(string palavraChave)
