@@ -25,6 +25,8 @@ public class Academia
     public List<Treinador> Treinadores { get; }
 
     public List<Cliente> Clientes { get; }
+    
+    public List<Plano> Planos { get; }
 
     // // METODOS DE TESTE
     // //criando treinadores para teste
@@ -308,23 +310,6 @@ public class Academia
                 case 1:
                     gerenciaExercicios();
                     break;
-                case 2:
-                    Console.WriteLine("");
-
-                    var exercicioMaisUtilizado = _treinos.SelectMany(t => t.Exercicios)
-                        .GroupBy(g => g.GrupoMuscular)
-                        .Select(e => new {NomeExercicio = e.Key, Quantidade = e.Count()})
-                        .OrderByDescending(e => e.Quantidade)
-                        .Take(10);
-
-                    foreach (var exercicio in exercicioMaisUtilizado)
-                        {
-                            Console.WriteLine($"Exercício: {Exercicios.NomeExercicio}, Quantidade: {Exercicio.Quantidade}");
-                        }
-                        Console.WriteLine();
-                        App.pausa();
-                        break;
-
                 case 0:
                     break;
                 default:
@@ -789,17 +774,14 @@ public class Academia
                     try
                     {
 
-                    treinoId.adicionarCliente(cliente);
+                        treinoId.adicionarCliente(cliente);
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine(e.Message);
                         App.pausa();
-                        break;
                     }
-
                     break;
-
                 case 3:
                     listarExercicios();
                     Console.Write("Escolha o ID do exercicio: ");
