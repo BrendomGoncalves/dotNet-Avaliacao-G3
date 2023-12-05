@@ -3,7 +3,10 @@ namespace AcademiaTF;
 public class Exercicio
 {
     // Construtores
-    public Exercicio() { }
+    public Exercicio()
+    {
+    }
+
     public Exercicio(string grupoMuscular, int series, int repeticoes, int tempoIntervalo)
     {
         GrupoMuscular = grupoMuscular;
@@ -28,6 +31,7 @@ public class Exercicio
             _grupoMuscular = value;
         }
     }
+
     public int Series
     {
         get => _series;
@@ -37,6 +41,7 @@ public class Exercicio
             _series = value;
         }
     }
+
     public int Repeticoes
     {
         get => _repeticoes;
@@ -46,6 +51,7 @@ public class Exercicio
             _repeticoes = value;
         }
     }
+
     public int TempoIntervalo
     {
         get => _tempoIntervalo;
@@ -75,7 +81,7 @@ public class Exercicio
         Series = series;
 
         Console.Write("Quantidade de repetições: ");
-        string repeticoesInput = Console.ReadLine();
+        string? repeticoesInput = Console.ReadLine();
         int repeticoes;
         while (!int.TryParse(repeticoesInput, out repeticoes))
         {
@@ -87,38 +93,37 @@ public class Exercicio
 
 
         Console.Write("Tempo de intervalo (em segundos): ");
-        string tempoIntervaloInput = Console.ReadLine();
+        string? tempoIntervaloInput = Console.ReadLine();
         int tempoIntervalo;
         while (!int.TryParse(tempoIntervaloInput, out tempoIntervalo))
         {
             Console.Write("Por favor, insira um número válido para o tempo de intervalo: ");
             tempoIntervaloInput = Console.ReadLine();
         }
+
         TempoIntervalo = tempoIntervalo;
     }
 
     public void editarExercicio()
     {
-
         Console.Clear();
         Console.WriteLine("EDITAR EXERCÍCIO:");
 
         Console.Write("Quantidade de séries: ");
         string? series = Console.ReadLine();
 
-        Series = int.Parse(series);
+        Series = int.Parse(series!);
 
         Console.Write("Quantidade de repetições: ");
         string? repeticoes = Console.ReadLine();
 
-        Repeticoes = int.Parse(repeticoes);
+        Repeticoes = int.Parse(repeticoes!);
 
 
         Console.Write("Tempo de intervalo (em segundos): ");
         string? tempoIntervalo = Console.ReadLine();
-        TempoIntervalo = int.Parse(tempoIntervalo);
+        TempoIntervalo = int.Parse(tempoIntervalo!);
     }
-
 
     public void imprimeExercicio()
     {

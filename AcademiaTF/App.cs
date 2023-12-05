@@ -14,7 +14,7 @@ public class App
             Console.WriteLine("2. Clientes");
             Console.WriteLine("3. Exercícios");
             Console.WriteLine("4. Treinos");
-            Console.WriteLine("5. Treinadores e clientes aniversariantes");
+            Console.WriteLine("5. Treinadores e clientes aniversariantes [Relatorio]");
 
             Console.WriteLine("0. Sair");
             Console.Write("> ");
