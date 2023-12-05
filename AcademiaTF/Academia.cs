@@ -25,6 +25,8 @@ public class Academia
     public List<Treinador> Treinadores { get; }
 
     public List<Cliente> Clientes { get; }
+    
+    public List<Plano> Planos { get; }
 
     // // METODOS DE TESTE
     // //criando treinadores para teste
@@ -291,6 +293,7 @@ public class Academia
             Console.Clear();
             Console.WriteLine("== Menu Exercícios ==");
             Console.WriteLine("1. Gerenciar Exercícios");
+            Console.WriteLine("2. Top 10 exercícios mais utilizados nos treinos");
             Console.WriteLine("0. Voltar");
             Console.Write("> ");
             try
@@ -306,6 +309,23 @@ public class Academia
             {
                 case 1:
                     gerenciaExercicios();
+                    break;
+                case 2:
+                    Console.Clear();
+                    Console.WriteLine("Top 10 exercícios mais utilizados nos treinos");
+                    if (Treinos.Count > 0)
+                    {
+                        var exerciciosMaisUtilizados = Treinos
+                            .SelectMany(treino => treino.Exercicios!)
+                            .GroupBy(exercicio => exercicio.GrupoMuscular)
+                            .OrderByDescending(grupo => grupo.Count())
+                            .Take(10)
+                            .Select(grupo => grupo.Key);
+                        foreach (var exercicio in exerciciosMaisUtilizados) Console.WriteLine(exercicio);
+                    }
+                    else Console.WriteLine("Nenhum treino criado");
+
+                    App.pausa();
                     break;
                 case 0:
                     break;
@@ -773,17 +793,14 @@ public class Academia
                     try
                     {
 
-                    treinoId.adicionarCliente(cliente);
+                        treinoId.adicionarCliente(cliente);
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine(e.Message);
                         App.pausa();
-                        break;
                     }
-
                     break;
-
                 case 3:
                     listarExercicios();
                     Console.Write("Escolha o ID do exercicio: ");
